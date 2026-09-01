@@ -1,0 +1,269 @@
+DATA 266 - Homework 1 Run Log
+SID4: 1598
+SEED: 1598
+HP_ID: 2
+
+NOTE:
+The executed notebooks contain the complete outputs from the experiments.
+Exact cell execution timestamps were not recorded separately during some
+of the original Colab runs. The outputs below are copied from the executed
+notebooks that produced the reported HW1 results.
+
+============================================================
+NEURAL NETWORK EXPERIMENTS
+============================================================
+
+Dataset split:
+Training   = 70%
+Validation = 15%
+Testing    = 15%
+random_state = 1598
+
+Training seeds:
+1598
+1599
+1600
+
+
+------------------------------------------------------------
+PYTORCH - THREE SEED EXPERIMENT
+------------------------------------------------------------
+
+Baseline configuration:
+Hidden layers: [64, 32]
+Learning rate: 0.001
+Epochs: 30
+
+Modified configuration:
+HP_ID: 2
+Hidden layers: [64, 32]
+Learning rate: 0.003
+Epochs: 30
+
+Console output:
+
+Seed: 1598 | Baseline: 65.79 % | Modified: 75.44 %
+Seed: 1599 | Baseline: 65.79 % | Modified: 73.68 %
+Seed: 1600 | Baseline: 64.91 % | Modified: 71.93 %
+
+PyTorch Baseline
+Mean test accuracy: 65.5 %
+Standard deviation: 0.41
+
+PyTorch Modified
+Mean test accuracy: 73.68 %
+Standard deviation: 1.43
+
+
+------------------------------------------------------------
+TENSORFLOW - THREE SEED EXPERIMENT
+------------------------------------------------------------
+
+Baseline configuration:
+Hidden layers: [64, 32]
+Learning rate: 0.001
+Epochs: 30
+
+Modified configuration:
+HP_ID: 2
+Hidden layers: [64, 32]
+Learning rate: 0.003
+Epochs: 30
+
+Console output:
+
+Seed: 1598 | Baseline: 73.68 % | Modified: 73.68 %
+Seed: 1599 | Baseline: 71.05 % | Modified: 71.93 %
+Seed: 1600 | Baseline: 71.05 % | Modified: 73.68 %
+
+TensorFlow Baseline
+Mean test accuracy: 71.93 %
+Standard deviation: 1.24
+
+TensorFlow Modified
+Mean test accuracy: 73.10 %
+Standard deviation: 0.83
+
+
+============================================================
+CUDA MATRIX MULTIPLICATION
+============================================================
+
+Environment:
+GPU: NVIDIA Tesla T4
+CUDA architecture: sm_75
+Block size: 16 x 16 threads
+Profiler: nvprof
+
+Compilation command:
+
+nvcc -O3 -arch=sm_75 matrix_multiplication.cu -o matrix_multiplication
+
+
+------------------------------------------------------------
+MATRIX SIZE: 256 x 256
+------------------------------------------------------------
+
+Run 1
+
+CPU time: 3.008 ms
+GPU kernel time: 0.151 ms
+H2D time: 0.180 ms
+D2H time: 0.208 ms
+H2D + D2H time: 0.388 ms
+GPU end-to-end time: 0.538 ms
+End-to-end speedup: 5.587x
+Maximum error: 0.000015
+
+Run 2
+
+CPU time: 2.568 ms
+GPU kernel time: 0.071 ms
+H2D time: 0.181 ms
+D2H time: 0.214 ms
+H2D + D2H time: 0.394 ms
+GPU end-to-end time: 0.465 ms
+End-to-end speedup: 5.523x
+Maximum error: 0.000015
+
+Run 3
+
+CPU time: 2.910 ms
+GPU kernel time: 0.117 ms
+H2D time: 0.186 ms
+D2H time: 0.224 ms
+H2D + D2H time: 0.409 ms
+GPU end-to-end time: 0.527 ms
+End-to-end speedup: 5.523x
+Maximum error: 0.000015
+
+
+------------------------------------------------------------
+MATRIX SIZE: 1024 x 1024
+------------------------------------------------------------
+
+Run 1
+
+CPU time: 217.140 ms
+GPU kernel time: 4.994 ms
+H2D time: 2.082 ms
+D2H time: 2.853 ms
+H2D + D2H time: 4.935 ms
+GPU end-to-end time: 9.929 ms
+End-to-end speedup: 21.870x
+Maximum error: 0.000107
+
+Run 2
+
+CPU time: 210.839 ms
+GPU kernel time: 4.854 ms
+H2D time: 2.034 ms
+D2H time: 2.867 ms
+H2D + D2H time: 4.901 ms
+GPU end-to-end time: 9.755 ms
+End-to-end speedup: 21.614x
+Maximum error: 0.000107
+
+Run 3
+
+CPU time: 215.572 ms
+GPU kernel time: 4.533 ms
+H2D time: 2.076 ms
+D2H time: 2.810 ms
+H2D + D2H time: 4.886 ms
+GPU end-to-end time: 9.419 ms
+End-to-end speedup: 22.887x
+Maximum error: 0.000107
+
+
+------------------------------------------------------------
+MATRIX SIZE: 4096 x 4096
+------------------------------------------------------------
+
+Run 1
+
+CPU time: 20663.974 ms
+GPU kernel time: 316.286 ms
+H2D time: 29.084 ms
+D2H time: 45.610 ms
+H2D + D2H time: 74.694 ms
+GPU end-to-end time: 390.979 ms
+End-to-end speedup: 52.852x
+Maximum error: 0.000366
+
+Run 2
+
+CPU time: 20193.269 ms
+GPU kernel time: 317.121 ms
+H2D time: 33.211 ms
+D2H time: 51.714 ms
+H2D + D2H time: 84.925 ms
+GPU end-to-end time: 402.046 ms
+End-to-end speedup: 50.226x
+Maximum error: 0.000366
+
+Run 3
+
+CPU time: 20560.384 ms
+GPU kernel time: 318.212 ms
+H2D time: 28.888 ms
+D2H time: 43.114 ms
+H2D + D2H time: 72.002 ms
+GPU end-to-end time: 390.215 ms
+End-to-end speedup: 52.690x
+Maximum error: 0.000366
+
+
+------------------------------------------------------------
+CUDA AVERAGE RESULTS
+------------------------------------------------------------
+
+Matrix Size: 256
+Average CPU time: 2.829 ms
+Average GPU kernel time: 0.113 ms
+Average H2D + D2H time: 0.397 ms
+End-to-end speedup: 5.546x
+
+Matrix Size: 1024
+Average CPU time: 214.517 ms
+Average GPU kernel time: 4.794 ms
+Average H2D + D2H time: 4.907 ms
+End-to-end speedup: 22.113x
+
+Matrix Size: 4096
+Average CPU time: 20472.542 ms
+Average GPU kernel time: 317.206 ms
+Average H2D + D2H time: 77.207 ms
+End-to-end speedup: 51.906x
+
+
+============================================================
+CUDA PROFILER
+============================================================
+
+Profiler used:
+nvprof
+
+Command:
+
+nvprof ./matrix_multiplication 1024
+
+Relevant profiler output:
+
+GPU activities:
+83.23%  17.068ms   2 calls   matrixMultiplyGPU(...)
+8.76%    1.7969ms  1 call    [CUDA memcpy DtoH]
+8.01%    1.6419ms  2 calls   [CUDA memcpy HtoD]
+
+The two matrixMultiplyGPU calls include one warm-up kernel call and
+one measured kernel call.
+
+
+============================================================
+ERRORS / WARNINGS
+============================================================
+
+No relevant runtime errors were present in the final executed runs.
+
+Full code, plots, training output, CUDA timing output, and profiler
+output are preserved in neural_networks.ipynb and cuda.ipynb.
