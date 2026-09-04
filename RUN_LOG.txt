@@ -1,0 +1,286 @@
+DATA 266 - GEN AI AND LLM
+Homework 2
+
+RUN LOG
+============================================================
+
+Final execution environment
+------------------------------------------------------------
+Date:
+Runtime:
+Python version:
+PyTorch version:
+Gensim version:
+Pandas version:
+Scikit-learn version:
+CUDA available:
+GPU:
+
+============================================================
+PART 1 - EMBEDDING-BASED TRANSFER LEARNING
+============================================================
+
+[time]
+Loaded pretrained model: word2vec-google-news-300
+Embedding dimension: 300
+Target words checked:
+cast
+score
+plot
+screen
+review
+
+[time]
+Loaded IMDB Movie Reviews dataset.
+Training reviews: 25000
+Test reviews: 25000
+
+[time]
+Preprocessed the IMDB training reviews.
+
+[time]
+Transferred pretrained Google News vectors into the
+trainable Word2Vec model.
+
+Transfer verification:
+cast   -> True
+score  -> True
+plot   -> True
+screen -> True
+review -> True
+
+[time]
+Started Word2Vec fine-tuning.
+Epochs: 5
+
+Warning observed:
+WARNING: gensim.models.word2vec:
+Effective 'alpha' higher than previous training cycles
+
+Fine-tuning completed.
+Number of training reviews: 25000
+Epochs: 5
+
+[time]
+Generated:
+- nearest-neighbor results before fine-tuning
+- nearest-neighbor results after fine-tuning
+- original vs fine-tuned cosine similarities
+- most-shifted and least-shifted words
+- t-SNE visualization
+
+============================================================
+PART 2 - RETRIEVAL-AUGMENTED GENERATION
+============================================================
+
+[time]
+Loaded 10 Wikipedia movie pages.
+
+Movies:
+1. Inception
+2. Titanic (1997 film)
+3. The Dark Knight
+4. Interstellar
+5. The Matrix
+6. Avatar (2009 film)
+7. The Godfather
+8. Jurassic Park
+9. Toy Story
+10. Gladiator (2000 film)
+
+[time]
+Main chunking configuration:
+chunk_size = 500
+chunk_overlap = 50
+
+Created embeddings using:
+sentence-transformers/all-MiniLM-L6-v2
+
+Vector store:
+FAISS
+
+Retriever:
+top_k = 3
+
+[time]
+Loaded LLM:
+google/flan-t5-large
+Device: cuda
+
+[time]
+Ran 5 RAG questions.
+
+Q1: Who directed Inception?
+First relevant rank: 1
+Generated answer: Christopher Nolan
+
+Q2: Who played Jack Dawson in Titanic?
+First relevant rank: 2
+Generated answer: Leonardo DiCaprio
+
+Q3: Which actor played the Joker in The Dark Knight?
+First relevant rank: 1
+Generated answer: Heath Ledger
+
+Q4: What color pill does Neo take in The Matrix?
+First relevant rank: 2
+Generated answer: red
+
+Q5: Who composed the music for Gladiator?
+First relevant rank: 1
+Generated answer: Hans Zimmer and Lisa Gerrard
+
+Retrieval Success Rate:
+5 / 5 = 100%
+
+[time]
+Alternate chunking configuration:
+chunk_size = 300
+chunk_overlap = 75
+
+Questions re-run:
+- Titanic question
+- Matrix question
+
+Titanic:
+First relevant rank remained 2.
+Generated answer remained Leonardo DiCaprio.
+
+Matrix:
+First relevant rank remained 2.
+Generated answer remained red.
+
+============================================================
+PART 3 - TRAINING OPTIMIZATION
+============================================================
+
+Controlled setup:
+Model: ExperimentNetwork
+Input dimension: 512
+Hidden dimension: 1024
+Classes: 10
+Dataset size: 4096
+Effective batch size: 64
+Training steps: 50
+Optimizer: Adam
+Learning rate: 0.001
+GPU: Tesla T4
+
+Each benchmark used:
+- one warm-up run
+- three measured runs
+
+Final average measurements:
+
+Baseline
+Time: 0.5575 s
+Peak GPU memory: 78.56 MB
+Final loss: 2.3033
+
+GPU-resident data
+Time: 0.3109 s
+Peak GPU memory: 86.60 MB
+Final loss: 2.3033
+
+Kaiming initialization
+Time: 0.1692 s
+Peak GPU memory: 78.56 MB
+Final loss: 2.3266
+
+Activation checkpointing
+Time: 0.2979 s
+Peak GPU memory: 79.56 MB
+Final loss: 2.3033
+
+Gradient accumulation x4
+Time: 0.3227 s
+Peak GPU memory: 79.56 MB
+Final loss: 2.3033
+
+Mixed precision training
+Time: 0.1639 s
+Peak GPU memory: 79.56 MB
+Final loss: 2.3018
+
+============================================================
+ERRORS / WARNINGS ENCOUNTERED DURING DEVELOPMENT
+============================================================
+
+1. IMDB dataset loading error
+
+Initial code:
+load_dataset("imdb")
+
+Error:
+HfUriError
+
+Fix:
+Changed the dataset identifier to:
+load_dataset("stanfordnlp/imdb")
+
+Result:
+Dataset loaded successfully.
+
+------------------------------------------------------------
+
+2. Wikipedia loader error
+
+The first WikipediaLoader attempt produced:
+JSONDecodeError: Expecting value: line 1 column 1
+
+Fix:
+Used LangChain WebBaseLoader with exact Wikipedia URLs.
+
+Result:
+All 10 movie documents loaded successfully.
+
+------------------------------------------------------------
+
+3. Hugging Face pipeline error
+
+Initial setup used:
+task="text2text-generation"
+
+Error:
+KeyError: Unknown task text2text-generation
+
+Fix:
+Loaded FLAN-T5 directly using:
+AutoTokenizer
+AutoModelForSeq2SeqLM
+
+------------------------------------------------------------
+
+4. LLM sanity-check failure
+
+Model:
+google/flan-t5-base
+
+Test question:
+What is the capital city of France?
+
+Incorrect output:
+london
+
+Fix:
+Changed the model to:
+google/flan-t5-large
+
+Repeated test output:
+Paris
+
+------------------------------------------------------------
+
+5. Colab runtime restart
+
+Errors encountered after runtime state was cleared:
+
+NameError: name 'pd' is not defined
+NameError: name 'plt' is not defined
+
+Fix:
+Re-ran the required imports and Part 3 setup cells.
+
+============================================================
+END OF RUN LOG
+============================================================
