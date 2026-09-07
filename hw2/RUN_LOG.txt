@@ -1,0 +1,572 @@
+DATA 266 - Generative AI and Large Language Models
+Homework 2 - Run Log
+
+Student: Haritha Gottumukkala
+SID4: 1598
+SEED: 1598
+
+======================================================================
+FINAL EXECUTION ENVIRONMENT
+===========================
+
+Run timestamp: 2026-09-06 17:40:34
+
+Runtime:
+
+* Google Colab
+* CUDA available: True
+* GPU: Tesla T4
+
+Software:
+
+* Python: 3.13.15
+* PyTorch: 2.11.0+cu128
+* Gensim: 4.4.0
+* Pandas: 2.2.3
+* Scikit-learn: 1.6.1
+
+Personal parameters:
+
+* SID4 = 1598
+* SEED = 1598
+* SLICE = 598
+* HP_ID = 2
+* CLS_A = 8
+* CLS_B = 5
+
+Random seeds were set for Python, NumPy, PyTorch, and CUDA before running the experiments.
+
+======================================================================
+PART 1 - EMBEDDING-BASED TRANSFER LEARNING
+==========================================
+
+Pretrained embedding model:
+word2vec-google-news-300
+
+Pretrained embedding dimension:
+300
+
+Pretrained vocabulary size:
+3,000,000
+
+Target words:
+
+* cast
+* score
+* plot
+* screen
+* review
+
+Target-word check:
+cast   -> Found
+score  -> Found
+plot   -> Found
+screen -> Found
+review -> Found
+
+IMDB dataset:
+
+* Dataset: stanfordnlp/imdb
+* Training reviews: 25,000
+* Test reviews: 25,000
+* Training reviews used for fine-tuning: 25,000
+
+Target-word frequencies in the IMDB training data:
+
+* cast   = 3829
+* score  = 1030
+* plot   = 6589
+* screen = 2492
+* review = 850
+
+Trainable Word2Vec model:
+
+* Vocabulary size: 46,149
+* Embedding dimension: 300
+* Words shared with Google News: 36,450
+* Pretrained vocabulary coverage: 78.98%
+
+Transfer verification:
+cast   -> pretrained vector copied: True
+score  -> pretrained vector copied: True
+plot   -> pretrained vector copied: True
+screen -> pretrained vector copied: True
+review -> pretrained vector copied: True
+
+Fine-tuning:
+
+* Corpus: IMDB training reviews
+* Number of reviews: 25,000
+* Epochs: 5
+* Seed: 1598
+* workers: 1
+
+Fine-tuning completed successfully.
+
+Original vs. fine-tuned cosine similarities:
+
+* cast   = 0.6646
+* score  = 0.5624
+* plot   = 0.6457
+* screen = 0.6706
+* review = 0.5391
+
+Most shifted target word:
+review
+Cosine similarity: 0.5391
+
+Least shifted target word:
+screen
+Cosine similarity: 0.6706
+
+A t-SNE visualization was generated for the original and fine-tuned versions of all five target-word embeddings.
+
+Part 1 status:
+COMPLETED SUCCESSFULLY
+
+======================================================================
+PART 2 - RETRIEVAL-AUGMENTED GENERATION
+=======================================
+
+Documents:
+10 Wikipedia movie pages
+
+Movies loaded:
+
+1. Inception
+2. Titanic (1997 film)
+3. The Dark Knight
+4. Interstellar
+5. The Matrix
+6. Avatar (2009 film)
+7. The Godfather
+8. Jurassic Park
+9. Toy Story
+10. Gladiator (2000 film)
+
+Total documents loaded:
+10
+
+Main chunking configuration:
+
+* Chunk size: 500
+* Chunk overlap: 50
+* Total chunks created: 3,573
+
+Embedding model:
+sentence-transformers/all-MiniLM-L6-v2
+
+Embedding device:
+CUDA
+
+Vector store:
+FAISS
+
+Chunks stored in FAISS:
+3,573
+
+Retriever:
+
+* Top-k = 3
+
+Generation model:
+google/flan-t5-large
+
+Generation device:
+CUDA
+
+Sanity check performed before final RAG evaluation:
+
+Question:
+What is the capital city of France?
+
+Generated answer:
+Paris
+
+The sanity check passed before the model was used for the final RAG questions.
+
+---
+
+## FINAL RAG EVALUATION
+
+Question 1:
+Who directed Inception?
+
+First relevant rank:
+1
+
+Generated answer:
+Christopher Nolan
+
+Top-3 retrieval success:
+Yes
+
+Question 2:
+Who played Jack Dawson in Titanic?
+
+First relevant rank:
+2
+
+Generated answer:
+Leonardo DiCaprio
+
+Top-3 retrieval success:
+Yes
+
+Question 3:
+Which actor played the Joker in The Dark Knight?
+
+First relevant rank:
+1
+
+Generated answer:
+Heath Ledger
+
+Top-3 retrieval success:
+Yes
+
+Question 4:
+What color pill does Neo take in The Matrix?
+
+First relevant rank:
+2
+
+Generated answer:
+red
+
+Top-3 retrieval success:
+Yes
+
+Question 5:
+Who composed the music for Gladiator?
+
+First relevant rank:
+1
+
+Generated answer:
+Hans Zimmer and Lisa Gerrard
+
+Top-3 retrieval success:
+Yes
+
+Retrieval evaluation:
+
+* Successful top-3 retrievals: 5
+* Total questions: 5
+* Retrieval success rate: 100.00%
+
+---
+
+## ALTERNATE CHUNKING EXPERIMENT
+
+Alternate configuration:
+
+* Chunk size: 300
+* Chunk overlap: 75
+* Total chunks created: 6,416
+* Top-k: 3
+
+Questions selected for re-evaluation:
+
+1. Who played Jack Dawson in Titanic?
+   Main configuration first relevant rank: 2
+   Alternate configuration first relevant rank: 2
+   Generated answer: Leonardo DiCaprio
+
+2. What color pill does Neo take in The Matrix?
+   Main configuration first relevant rank: 2
+   Alternate configuration first relevant rank: 2
+   Generated answer: red
+
+Result:
+Changing the chunk size from 500/50 to 300/75 changed the chunk boundaries and increased the total number of chunks, but it did not improve the first relevant rank for either retrieval case.
+
+Part 2 status:
+COMPLETED SUCCESSFULLY
+
+======================================================================
+PART 3 - TRAINING OPTIMIZATION TECHNIQUES
+=========================================
+
+Controlled experimental settings:
+
+* Model: ExperimentNetwork
+* Input dimension: 512
+* Hidden dimension: 1024
+* Number of classes: 10
+* Dataset size: 4096
+* Effective batch size: 64
+* Training steps: 50
+* Optimizer: Adam
+* Learning rate: 0.001
+* Seed: 1598
+* Device: Tesla T4 GPU
+
+Input tensor shape:
+torch.Size([4096, 512])
+
+Target tensor shape:
+torch.Size([4096])
+
+Model test:
+Input shape  = torch.Size([64, 512])
+Output shape = torch.Size([64, 10])
+
+Benchmark procedure:
+
+* One warm-up run before measurement
+* Three measured runs for each configuration
+* Same seed and controlled experimental settings maintained across comparisons
+
+---
+
+## 3.1 BASELINE
+
+Experiment:
+Baseline
+
+Average training time:
+0.133675 s
+
+Average peak GPU memory:
+1975.382324 MB
+
+Average final loss:
+2.303293
+
+---
+
+## 3.2 CPU-TO-GPU BATCHES VS. GPU-RESIDENT DATA
+
+CPU-to-GPU batches:
+
+* Average time: 0.125763 s
+* Average peak GPU memory: 1975.382324 MB
+* Average final loss: 2.303293
+
+GPU-resident data:
+
+* Average time: 0.133244 s
+* Average peak GPU memory: 1983.413574 MB
+* Average final loss: 2.303293
+
+Observation:
+For this relatively small experiment, keeping the complete dataset on the GPU did not provide a measurable speed improvement. It also used slightly more GPU memory.
+
+---
+
+## 3.3 DEFAULT VS. KAIMING INITIALIZATION
+
+Default initialization:
+
+* Average time: 0.128300 s
+* Average peak GPU memory: 1975.382324 MB
+* Average final loss: 2.303293
+
+Kaiming initialization:
+
+* Average time: 0.125693 s
+* Average peak GPU memory: 1975.382324 MB
+* Average final loss: 2.326585
+
+Observation:
+Kaiming initialization had a slightly lower measured runtime, but the final loss after the fixed 50 training steps was higher than with the default initialization.
+
+---
+
+## 3.4 ACTIVATION CHECKPOINTING
+
+Without checkpointing:
+
+* Average time: 0.127737 s
+* Average peak GPU memory: 1975.382324 MB
+* Average final loss: 2.303293
+
+With activation checkpointing:
+
+* Average time: 0.237984 s
+* Average peak GPU memory: 1976.382324 MB
+* Average final loss: 2.303293
+
+Observation:
+Checkpointing increased training time because intermediate activations had to be recomputed during backpropagation. No useful reduction in measured peak GPU memory was observed for this small network.
+
+---
+
+## 3.5 GRADIENT ACCUMULATION
+
+No gradient accumulation:
+
+* Average time: 0.138447 s
+* Average peak GPU memory: 1976.382324 MB
+* Average final loss: 2.303293
+
+Gradient accumulation x4:
+
+* Average time: 0.317288 s
+* Average peak GPU memory: 1976.380859 MB
+* Average final loss: 2.303293
+
+Observation:
+Gradient accumulation preserved the same effective batch size but required multiple microbatch forward and backward passes. This increased training time, while the measured peak memory remained almost unchanged in this experiment.
+
+---
+
+## 3.6 MIXED PRECISION
+
+FP32 training:
+
+* Average time: 0.126003 s
+* Average peak GPU memory: 1976.382324 MB
+* Average final loss: 2.303293
+
+Mixed precision training:
+
+* Average time: 0.171087 s
+* Average peak GPU memory: 1976.382812 MB
+* Average final loss: 2.301819
+
+Observation:
+Mixed precision preserved a final loss very close to FP32. However, it was slower in this particular short Tesla T4 benchmark. This result shows that mixed precision does not automatically produce a measurable speed improvement for every model and workload.
+
+---
+
+## FINAL PART 3 SUMMARY
+
+Final comparison table values:
+
+Baseline
+Time: 0.1337 s
+Peak GPU memory: 1975.38 MB
+Final loss: 2.3033
+
+GPU-resident data
+Time: 0.1332 s
+Peak GPU memory: 1983.41 MB
+Final loss: 2.3033
+
+Kaiming Initialization
+Time: 0.1257 s
+Peak GPU memory: 1975.38 MB
+Final loss: 2.3266
+
+With Activation Checkpointing
+Time: 0.2380 s
+Peak GPU memory: 1976.38 MB
+Final loss: 2.3033
+
+Gradient Accumulation x4
+Time: 0.3173 s
+Peak GPU memory: 1976.38 MB
+Final loss: 2.3033
+
+Mixed Precision Training
+Time: 0.1711 s
+Peak GPU memory: 1976.38 MB
+Final loss: 2.3018
+
+Part 3 status:
+COMPLETED SUCCESSFULLY
+
+======================================================================
+WARNINGS AND DEVELOPMENT ISSUES
+===============================
+
+The final executed notebook completed without an unhandled exception.
+
+A few non-fatal warnings were visible during the final execution, including:
+
+* Hugging Face warning about unauthenticated Hub requests.
+* USER_AGENT environment variable warning from LangChain.
+* Transformers warning that `torch_dtype` is deprecated in favor of `dtype`.
+* FLAN-T5 tied-weight configuration warning.
+
+These warnings did not stop the notebook from completing.
+
+During development, several errors were also encountered and corrected before the final successful run.
+
+1. IMDB dataset loading
+
+Initial approach:
+load_dataset("imdb")
+
+The dataset identifier caused an error in the current environment.
+
+Final approach:
+load_dataset("stanfordnlp/imdb")
+
+Result:
+The dataset loaded successfully.
+
+2. Wikipedia loading
+
+The initial WikipediaLoader approach produced a JSON decoding error.
+
+Final approach:
+WebBaseLoader was used with the exact Wikipedia URLs for the ten movies.
+
+Result:
+All 10 movie documents loaded successfully.
+
+3. FLAN-T5 loading
+
+An earlier Transformers `text2text-generation` pipeline approach produced a KeyError in the installed environment.
+
+Final approach:
+AutoTokenizer and AutoModelForSeq2SeqLM were used to load FLAN-T5 directly.
+
+Result:
+The model loaded and generated answers successfully.
+
+4. Model sanity check
+
+An earlier FLAN-T5-base setup returned:
+
+london
+
+for the question:
+
+What is the capital city of France?
+
+The model was changed to google/flan-t5-large.
+
+The same sanity check then returned:
+
+Paris
+
+5. Colab runtime reset
+
+After a runtime restart, some variables and imports were no longer available.
+
+Examples encountered during development:
+
+NameError: name 'optimization_results' is not defined
+
+NameError: name 'plt' is not defined
+
+The required setup, import, and experiment cells were rerun in the correct order.
+
+Result:
+The final notebook completed successfully.
+
+======================================================================
+FINAL RUN STATUS
+================
+
+Part 1 - Embedding-Based Transfer Learning:
+PASS
+
+Part 2 - Retrieval-Augmented Generation:
+PASS
+
+Part 3 - Training Optimization:
+PASS
+
+Top-3 RAG retrieval success:
+5 / 5 = 100.00%
+
+Final notebook:
+Executed with outputs present.
+
+Overall final run status:
+SUCCESS
