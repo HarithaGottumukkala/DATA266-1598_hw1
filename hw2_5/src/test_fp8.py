@@ -1,7 +1,8 @@
 import subprocess
 import torch
+from reproducibility import set_reproducibility
 
-
+set_reproducibility()
 def gpu_uuid():
     result = subprocess.run(
         [

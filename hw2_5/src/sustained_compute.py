@@ -6,8 +6,9 @@ import time
 from datetime import datetime
 
 import torch
+from reproducibility import set_reproducibility
 
-
+set_reproducibility()
 MATRIX_SIZE = 8192
 DTYPE = torch.bfloat16
 

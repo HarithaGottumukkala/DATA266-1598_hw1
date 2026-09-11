@@ -1,5 +1,8 @@
 import subprocess
 import torch
+from reproducibility import set_reproducibility
+
+set_reproducibility()
 import torch.nn.functional as F
 
 from torch.nn.attention import SDPBackend, sdpa_kernel

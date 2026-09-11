@@ -7,6 +7,9 @@ import subprocess
 from datetime import datetime
 
 import torch
+from reproducibility import set_reproducibility
+
+set_reproducibility()
 import torch.nn.functional as F
 
 

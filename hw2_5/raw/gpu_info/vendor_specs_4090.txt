@@ -1,0 +1,58 @@
+HW2.5 RTX 4090 VENDOR SPECIFICATIONS
+====================================
+
+GPU:
+NVIDIA GeForce RTX 4090
+
+Architecture:
+NVIDIA Ada Lovelace
+
+Frame Buffer:
+24 GB GDDR6X
+
+Memory Interface:
+384-bit
+
+Memory Data Rate:
+21 Gbps
+
+Specified Memory Bandwidth:
+1008 GB/s
+
+Tensor Core Generation:
+4th Generation Tensor Cores
+
+Reduced Precision / Tensor Core Modes Documented for Ada:
+- TF32
+- FP16
+- BF16
+- FP8
+- INT8
+- INT4
+
+Theoretical dense throughput references used in this assignment:
+FP32: 82.6 TFLOPS
+TF32 Tensor: 82.6 TFLOPS
+FP16 Tensor with FP32 accumulation: 165.2 TFLOPS
+BF16 Tensor with FP32 accumulation: 165.2 TFLOPS
+
+Note:
+NVIDIA documentation sometimes reports two Tensor throughput values.
+The second value corresponds to structured sparsity. This assignment
+used the dense, non-sparse value when calculating percentage of
+theoretical peak.
+
+OFFICIAL SOURCES
+----------------
+
+1. NVIDIA GeForce RTX 4090 product specifications.
+   NVIDIA Corporation.
+   Source title: "GeForce RTX 4090 Graphics Cards for Gaming"
+
+2. NVIDIA Ada GPU Architecture Whitepaper.
+   NVIDIA Corporation.
+   Source title: "NVIDIA Ada GPU Architecture"
+
+These official NVIDIA sources document the RTX 4090 architecture,
+memory configuration, memory bandwidth, Tensor Core generation,
+and supported reduced-precision Tensor Core modes.

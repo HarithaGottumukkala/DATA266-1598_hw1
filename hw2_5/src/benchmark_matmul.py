@@ -5,8 +5,9 @@ import subprocess
 from datetime import datetime
 
 import torch
+from reproducibility import set_reproducibility
 
-
+set_reproducibility()
 def get_gpu_uuid():
     result = subprocess.run(
         [

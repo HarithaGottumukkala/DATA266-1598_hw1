@@ -4,8 +4,9 @@ import subprocess
 from datetime import datetime
 
 import torch
+from reproducibility import set_reproducibility
 
-
+set_reproducibility()
 SIZES = [1024, 4096, 8192, 16384]
 WARMUP = 5
 REPETITIONS = 20

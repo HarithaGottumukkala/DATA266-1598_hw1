@@ -1,0 +1,32 @@
+HW2.5 GPU RESERVATION RECORD
+============================
+
+GPU: NVIDIA GeForce RTX 4090
+Room: ISB 836
+Assigned Machine: 2
+
+Reservation Status:
+Approved
+
+Reservation Start:
+2026-09-10 12:00 PM PDT
+
+Reservation End:
+2026-09-11 11:59 AM PDT
+
+Reserved Window:
+Approximately 24 hours
+
+GPU UUID used for experiments:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Minimum evidence-supported actual GPU usage:
+2 hours 28 minutes 33 seconds
+
+Minimum evidence-supported GPU-hours:
+2.48 GPU-hours
+
+Note:
+The reservation email contained workstation authentication credentials.
+Username/password information has intentionally been excluded from this
+repository.

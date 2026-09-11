@@ -4,8 +4,9 @@ import subprocess
 from datetime import datetime
 
 import torch
+from reproducibility import set_reproducibility
 
-
+set_reproducibility()
 GPU_LABEL = "4090"
 
 # Official RTX 4090 reference values
