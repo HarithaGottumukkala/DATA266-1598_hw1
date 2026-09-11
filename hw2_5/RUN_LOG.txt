@@ -1,0 +1,757 @@
+HW2.5 RUN LOG
+Precision, Bandwidth, and the Cost of Attention
+============================================================
+
+GPU LABEL
+---------
+RTX 4090
+
+GPU NAME
+--------
+NVIDIA GeForce RTX 4090
+
+GPU UUID
+--------
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+EXPERIMENT DATE
+---------------
+2026-09-10
+
+PYTORCH / CUDA ENVIRONMENT
+--------------------------
+PyTorch: 2.11.0+cu128
+PyTorch CUDA Runtime: 12.8
+CUDA Available: True
+BF16 Supported: True
+
+All measurements below were performed on the GPU identified by:
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+
+============================================================
+PART A — GPU IDENTIFICATION AND SYSTEM INFORMATION
+============================================================
+
+RUN ID:
+A-4090-GPU-INFO
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+GPU:
+NVIDIA GeForce RTX 4090
+
+Reported VRAM:
+24564 MiB
+
+Configured Power Limit:
+450 W
+
+Evidence files:
+raw/gpu_info/nvidia_smi_4090.txt
+raw/gpu_info/nvidia_smi_summary_4090.txt
+raw/gpu_info/gpu_identity_4090.txt
+raw/gpu_info/pytorch_cuda_4090.txt
+raw/gpu_info/nvcc_4090.txt
+raw/gpu_info/preflight_4090.txt
+
+Notes:
+The complete output of nvidia-smi -q was captured in
+raw/gpu_info/nvidia_smi_4090.txt.
+
+This run establishes the GPU UUID used to identify all subsequent
+measurements.
+
+
+============================================================
+PART B — MATRIX MULTIPLICATION PRECISION BENCHMARK
+============================================================
+
+RUN ID:
+B-4090-MATMUL
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Command:
+python src/benchmark_matmul.py --gpu-label 4090 --sizes 1024 4096 8192 16384 --warmup 5 --reps 20
+
+Tested matrix sizes:
+1024
+4096
+8192
+16384
+
+Tested precisions:
+FP32
+TF32
+FP16
+BF16
+
+Warm-up iterations:
+5
+
+Timed repetitions:
+20
+
+Evidence files:
+raw/matmul/matmul_4090.csv
+raw/matmul/matmul_fullrun_4090.txt
+raw/matmul/matmul_4090_with_theoretical.csv
+
+Figure:
+figures/matmul_throughput_4090.png
+
+Peak measured BF16 throughput:
+164.6871 TFLOPS
+
+Matrix size producing peak BF16 throughput:
+8192
+
+BF16 theoretical reference used:
+165.2 TFLOPS
+
+BF16 percent of theoretical:
+99.69%
+
+Traceability for Part F:
+"Peak achieved TFLOPS (BF16)" comes from this run.
+"% of theoretical peak (BF16)" also comes from this run.
+
+
+============================================================
+PART B — ADDITIONAL FP8 EXPERIMENT
+============================================================
+
+RUN ID:
+B-4090-FP8
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Evidence files:
+raw/matmul/fp8_capability_4090.txt
+raw/matmul/fp8_probe_4090.txt
+raw/matmul/fp8_benchmark_4090.csv
+raw/matmul/fp8_benchmark_run_4090.txt
+
+FP8 format:
+torch.float8_e4m3fn
+
+Operation:
+torch._scaled_mm
+
+Largest measured FP8 throughput:
+335.8943 TFLOPS
+
+Matrix size:
+16384
+
+Notes:
+The FP8 experiment was performed as the lower-precision extension.
+Quantization/conversion time was not included in the timed matrix
+multiplication measurement.
+
+The output/accumulation path used BF16 where required by the tested
+PyTorch operation.
+
+
+============================================================
+PART C — MEMORY BANDWIDTH AND ROOFLINE ANALYSIS
+============================================================
+
+RUN ID:
+C-4090-ROOFLINE
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Memory-bound workload:
+Large FP32 elementwise addition
+
+Compute-bound workload:
+FP32 matrix multiplication
+
+Evidence files:
+raw/bandwidth/roofline_4090.csv
+raw/bandwidth/roofline_run_4090.txt
+
+Measured effective memory bandwidth:
+920.74 GB/s
+
+Specified RTX 4090 memory bandwidth:
+1008 GB/s
+
+Measured bandwidth as percent of specified:
+91.34%
+
+Elementwise-add arithmetic intensity:
+0.08333 FLOPs/byte
+
+Roofline ridge point:
+81.94 FLOPs/byte
+
+FP32 matrix multiplication arithmetic intensity:
+1365.33 FLOPs/byte
+
+Classification:
+Elementwise addition = memory-bound
+Matrix multiplication = compute-bound
+
+Traceability for Part F:
+"Effective bandwidth (GB/s)" comes from this run.
+
+
+============================================================
+PART D — NAIVE SCALED DOT-PRODUCT ATTENTION
+============================================================
+
+RUN ID:
+D-4090-NAIVE
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Configuration:
+Batch size = 4
+Number of heads = 8
+Head dimension = 64
+Precision = BF16
+Dropout = 0
+Causal = False
+
+Implementation:
+The naive implementation explicitly materialized the complete
+[B, H, L, L] attention score/probability tensors.
+
+Required sequence lengths:
+512
+1024
+2048
+4096
+8192
+16384
+
+All required sequence lengths completed successfully.
+
+Evidence files:
+raw/attention/attention_naive_coarse_4090.csv
+raw/attention/attention_naive_coarse_run_4090.txt
+
+At sequence length 16384:
+
+PyTorch peak allocated memory:
+32.2579 GiB
+
+PyTorch peak reserved memory:
+32.2695 GiB
+
+A separate nvidia-smi memory monitor was used to verify physical
+device-memory pressure.
+
+Peak nvidia-smi memory usage observed:
+23945 MiB
+
+Total reported GPU memory:
+24564 MiB
+
+Verification file:
+raw/attention/nvidia_memory_watch_16384_4090.txt
+
+Additional safe sequence-length probes were performed.
+
+Largest safely tested successful naive sequence length:
+18944
+
+Smallest failing sequence length:
+Not observed within the safely tested range.
+
+Important observation:
+The Windows WDDM environment allowed memory oversubscription/paging.
+Because of this behavior, PyTorch allocations could exceed the physical
+VRAM capacity reported by nvidia-smi without producing a clean CUDA OOM.
+
+Testing was stopped rather than intentionally forcing excessive
+host-memory paging.
+
+Traceability for Part F:
+"Naive attention OOM length" is reported as:
+No clean OOM observed; largest safely tested success = 18944.
+
+
+============================================================
+PART D — NAIVE ATTENTION MEMORY GROWTH
+============================================================
+
+RUN ID:
+D-4090-NAIVE-MEMORY-FIT
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Evidence files:
+raw/attention/naive_attention_memory_fit_4090.txt
+raw/attention/naive_attention_memory_fit_run_4090.txt
+
+Figure:
+figures/naive_attention_memory_fit_4090.png
+
+Model fitted:
+Peak memory as a function of sequence length
+
+Quadratic coefficient:
+1.19209290e-07 GiB/token^2
+
+R^2:
+1.0000
+
+Interpretation:
+The measured naive-attention memory growth closely followed a
+quadratic relationship with sequence length.
+
+This behavior is expected because naive attention explicitly
+materializes L x L attention matrices.
+
+
+============================================================
+PART D — INITIAL FLASH ATTENTION ATTEMPT
+============================================================
+
+RUN ID:
+D-4090-FLASH-PROBE
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Initial backend requested:
+FLASH_ATTENTION
+
+Result:
+FAILED
+
+Error:
+RuntimeError: No available kernel. Aborting execution.
+
+Evidence files:
+raw/attention/attention_fused_coarse_4090.csv
+raw/attention/attention_fused_coarse_run_4090.txt
+raw/attention/sdpa_backend_probe_4090.txt
+
+Backend probe results:
+
+FLASH_ATTENTION:
+FAILED
+
+EFFICIENT_ATTENTION:
+SUCCESS
+
+CUDNN_ATTENTION:
+SUCCESS
+
+MATH:
+SUCCESS
+
+Reason for changing implementation:
+The installed Windows/PyTorch build did not provide an available
+Flash Attention kernel for this workload.
+
+Therefore, PyTorch EFFICIENT_ATTENTION was used for the required
+memory-efficient attention comparison.
+
+
+============================================================
+PART D — MEMORY-EFFICIENT ATTENTION
+============================================================
+
+RUN ID:
+D-4090-EFFICIENT
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Backend:
+PyTorch EFFICIENT_ATTENTION
+
+Configuration:
+Batch size = 4
+Number of heads = 8
+Head dimension = 64
+Precision = BF16
+Dropout = 0
+Causal = False
+
+Evidence files:
+raw/attention/attention_fused_efficient_coarse_4090.csv
+raw/attention/attention_fused_efficient_coarse_run_4090.txt
+
+Required sequence-length results:
+
+L = 512
+Peak allocated = 0.0078125 GiB
+Median latency = 0.12672 ms
+
+L = 1024
+Peak allocated = 0.015625 GiB
+Median latency = 0.139264 ms
+
+L = 2048
+Peak allocated = 0.03125 GiB
+Median latency = 0.352256 ms
+
+L = 4096
+Peak allocated = 0.0625 GiB
+Median latency = 1.180672 ms
+
+L = 8192
+Peak allocated = 0.125 GiB
+Median latency = 4.741024 ms
+
+L = 16384
+Peak allocated = 0.25 GiB
+Median latency = 17.263617 ms
+
+All required lengths:
+SUCCESS
+
+
+============================================================
+PART D — MEMORY-EFFICIENT ATTENTION LARGE-LENGTH TEST
+============================================================
+
+RUN ID:
+D-4090-EFFICIENT-OOM
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Coarse boundary tests:
+
+L = 32768
+Peak allocated = 0.5 GiB
+Status = SUCCESS
+
+L = 65536
+Peak allocated = 1.0 GiB
+Status = SUCCESS
+
+L = 131072
+Peak allocated = 2.0 GiB
+Status = SUCCESS
+
+L = 262144
+Peak allocated = 4.0 GiB
+Status = SUCCESS
+
+Large boundary tests:
+
+L = 524288
+Peak allocated = 8.0 GiB
+Status = SUCCESS
+
+L = 1048576
+Peak allocated = 16.0 GiB
+Status = SUCCESS
+
+L = 1572864
+Peak allocated = 24.0 GiB
+Status = SUCCESS
+
+Evidence files:
+raw/attention/efficient_oom_coarse_boundary_4090.csv
+raw/attention/efficient_oom_coarse_boundary_run_4090.txt
+raw/attention/efficient_oom_large_boundary_4090.csv
+raw/attention/efficient_oom_large_boundary_run_4090.txt
+
+Largest safely tested successful sequence length:
+1572864
+
+Smallest failing sequence length:
+Not observed within the safely tested range.
+
+Reason testing stopped:
+At L = 1572864, PyTorch reported 24.0 GiB peak allocated memory,
+which was already approximately equal to the physical VRAM capacity
+of the RTX 4090.
+
+Because the Windows WDDM environment had already demonstrated
+oversubscription/paging behavior, larger tests were avoided.
+
+Traceability for Part F:
+"Fused attention OOM length" is reported as:
+No clean OOM observed; largest safely tested success = 1572864.
+
+
+============================================================
+PART D — NAIVE VS MEMORY-EFFICIENT ATTENTION
+============================================================
+
+RUN ID:
+D-4090-ATTENTION-COMPARISON
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Evidence files:
+raw/attention/attention_comparison_4090.csv
+raw/attention/attention_comparison_run_4090.txt
+
+Figure:
+figures/attention_speedup_4090.png
+
+Measured approximate speedups:
+
+L = 512
+Speedup = 0.87x
+
+L = 1024
+Speedup = 3.15x
+
+L = 2048
+Speedup = 5.33x
+
+L = 4096
+Speedup = 6.23x
+
+L = 8192
+Speedup = 6.11x
+
+L = 16384
+Speedup = 51.68x
+
+Interpretation:
+At very small sequence lengths, optimized-kernel overhead can reduce
+the benefit of the memory-efficient implementation.
+
+At larger sequence lengths, avoiding explicit materialization of the
+L x L attention matrix substantially reduces memory use and improves
+performance.
+
+
+============================================================
+PART E — 20-MINUTE SUSTAINED COMPUTE TEST
+============================================================
+
+RUN ID:
+E-4090-SUSTAINED
+
+GPU UUID:
+GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Workload:
+BF16 matrix multiplication
+
+Matrix size:
+8192 x 8192
+
+Requested duration:
+1200 seconds
+
+Telemetry interval:
+5 seconds
+
+Evidence files:
+raw/thermal/sustained_compute_run_4090.txt
+raw/thermal/thermal_4090.csv
+raw/thermal/throughput_4090.csv
+raw/thermal/thermal_analysis_4090.txt
+raw/thermal/thermal_analysis_run_4090.txt
+
+Figures:
+figures/thermal_clock_4090.png
+figures/thermal_temperature_4090.png
+
+Number of telemetry samples:
+238
+
+Last telemetry timestamp:
+1198.02 seconds
+
+
+FIRST 30 SECONDS
+----------------
+
+Peak throughput:
+168.96 TFLOPS
+
+Average throughput:
+162.76 TFLOPS
+
+Average SM clock:
+2537.50 MHz
+
+Average temperature:
+55.67 C
+
+Average power:
+377.17 W
+
+
+FINAL FIVE MINUTES
+------------------
+
+Average throughput:
+160.11 TFLOPS
+
+Peak throughput:
+161.96 TFLOPS
+
+Average SM clock:
+2488.00 MHz
+
+Average temperature:
+75.97 C
+
+Average power:
+449.55 W
+
+Average GPU utilization:
+99.98%
+
+
+FULL RUN
+--------
+
+Maximum temperature:
+77.00 C
+
+Average power:
+447.70 W
+
+Maximum power:
+451.02 W
+
+Configured power limit:
+450.00 W
+
+Throughput change:
+-5.24%
+
+Clock change:
+-1.95%
+
+Steady-state throughput / initial peak throughput:
+160.11 / 168.96
+
+Steady-state / peak ratio:
+94.76%
+
+
+THROTTLING INTERPRETATION
+-------------------------
+
+Throttle onset:
+None observed.
+
+The GPU operated very close to its configured 450 W power limit
+during steady state.
+
+The final five-minute average temperature was approximately 75.97 C
+and the maximum observed temperature was 77 C.
+
+The SM clock decreased by only approximately 1.95% between the
+initial period and the final five minutes.
+
+The measured behavior is therefore more consistent with
+power-limited GPU boost behavior than severe thermal throttling.
+
+Traceability for Part F:
+"Steady-state / peak throughput" comes from this run.
+"Throttle onset" comes from this run.
+
+
+============================================================
+PART F — SUMMARY TRACEABILITY
+============================================================
+
+TABLE HW2.5.1 TRACEABILITY
+
+1. Peak achieved TFLOPS (BF16)
+   Value:
+   164.6871 TFLOPS
+
+   Run ID:
+   B-4090-MATMUL
+
+   Evidence:
+   raw/matmul/matmul_4090.csv
+
+
+2. Percent of theoretical peak (BF16)
+   Value:
+   99.69%
+
+   Run ID:
+   B-4090-MATMUL
+
+   Evidence:
+   raw/matmul/matmul_4090_with_theoretical.csv
+
+
+3. Effective bandwidth
+   Value:
+   920.74 GB/s
+
+   Run ID:
+   C-4090-ROOFLINE
+
+   Evidence:
+   raw/bandwidth/roofline_4090.csv
+
+
+4. Naive attention OOM length
+   Value:
+   No clean OOM observed.
+   Largest safely tested success = 18944.
+
+   Run ID:
+   D-4090-NAIVE
+
+   Evidence:
+   raw/attention/attention_naive_coarse_4090.csv
+   raw/attention/naive_oom_step4_4090.csv
+   raw/attention/nvidia_memory_watch_16384_4090.txt
+
+
+5. Fused / memory-efficient attention OOM length
+   Value:
+   No clean OOM observed.
+   Largest safely tested success = 1572864.
+
+   Run ID:
+   D-4090-EFFICIENT-OOM
+
+   Evidence:
+   raw/attention/efficient_oom_large_boundary_4090.csv
+
+
+6. Steady-state / peak throughput
+   Value:
+   160.11 / 168.96 TFLOPS
+   = 94.76%
+
+   Run ID:
+   E-4090-SUSTAINED
+
+   Evidence:
+   raw/thermal/thermal_analysis_4090.txt
+   raw/thermal/throughput_4090.csv
+
+
+7. Throttle onset
+   Value:
+   None observed
+
+   Run ID:
+   E-4090-SUSTAINED
+
+   Evidence:
+   raw/thermal/thermal_4090.csv
+   raw/thermal/thermal_analysis_4090.txt
+
+
+============================================================
+END OF RTX 4090 RUN LOG
+============================================================
