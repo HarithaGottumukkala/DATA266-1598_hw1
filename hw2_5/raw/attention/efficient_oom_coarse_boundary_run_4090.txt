@@ -1,0 +1,51 @@
+==============================================================================
+HW2.5 PART D - EFFICIENT ATTENTION OOM PROBE
+==============================================================================
+Timestamp: 2026-09-10T16:56:20.291387
+GPU: NVIDIA GeForce RTX 4090
+GPU UUID: GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+Visible VRAM: 23.988 GiB
+Backend: EFFICIENT_ATTENTION
+Batch size: 4
+Heads: 8
+Head dimension: 64
+Precision: BF16
+Test lengths: [32768, 65536, 131072, 262144]
+==============================================================================
+
+------------------------------------------------------------------------------
+Testing L=32768 ...
+Status: SUCCESS
+Baseline allocated: 0.375 GiB
+Peak allocated: 0.500 GiB
+Peak reserved: 0.500 GiB
+Forward latency: 72.944 ms
+
+------------------------------------------------------------------------------
+Testing L=65536 ...
+Status: SUCCESS
+Baseline allocated: 0.750 GiB
+Peak allocated: 1.000 GiB
+Peak reserved: 1.000 GiB
+Forward latency: 277.769 ms
+
+------------------------------------------------------------------------------
+Testing L=131072 ...
+Status: SUCCESS
+Baseline allocated: 1.500 GiB
+Peak allocated: 2.000 GiB
+Peak reserved: 2.000 GiB
+Forward latency: 1105.553 ms
+
+------------------------------------------------------------------------------
+Testing L=262144 ...
+Status: SUCCESS
+Baseline allocated: 3.000 GiB
+Peak allocated: 4.000 GiB
+Peak reserved: 4.000 GiB
+Forward latency: 4467.267 ms
+
+==============================================================================
+EFFICIENT ATTENTION OOM PROBE COMPLETE
+==============================================================================
+Saved: raw/attention/efficient_oom_coarse_boundary_4090.csv

@@ -1,0 +1,41 @@
+==============================================================================
+HW2.5 PART D ù NAIVE ATTENTION OOM BOUNDARY PROBE
+==============================================================================
+Timestamp: 2026-09-10T16:32:31.770163
+GPU: NVIDIA GeForce RTX 4090
+GPU UUID: GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+Visible VRAM: 23.988 GiB
+PyTorch memory fraction: 1.0
+Allocator limit: 23.988 GiB
+Batch size: 4
+Heads: 8
+Head dimension: 64
+Precision: BF16
+Test lengths: [14208, 14272, 14336]
+==============================================================================
+
+------------------------------------------------------------------------------
+Testing L=14208 ...
+Status: SUCCESS
+Baseline allocated: 0.164 GiB
+Peak allocated: 24.293 GiB
+Peak reserved: 24.305 GiB
+
+------------------------------------------------------------------------------
+Testing L=14272 ...
+Status: SUCCESS
+Baseline allocated: 0.172 GiB
+Peak allocated: 24.508 GiB
+Peak reserved: 24.523 GiB
+
+------------------------------------------------------------------------------
+Testing L=14336 ...
+Status: SUCCESS
+Baseline allocated: 0.172 GiB
+Peak allocated: 24.727 GiB
+Peak reserved: 24.738 GiB
+
+==============================================================================
+OOM PROBE COMPLETE
+==============================================================================
+Saved: raw/attention/naive_oom_final_boundary_4090.csv

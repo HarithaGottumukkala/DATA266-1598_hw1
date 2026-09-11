@@ -1,0 +1,19 @@
+==============================================================================
+HW2.5 PART D ù NAIVE ATTENTION OOM BOUNDARY PROBE
+==============================================================================
+GPU: NVIDIA GeForce RTX 4090
+GPU UUID: GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+Batch size: 4
+Heads: 8
+Head dimension: 64
+Precision: BF16
+Test lengths: [18432]
+
+Testing L=18432 ...
+Status: SUCCESS
+Peak allocated: 40.789 GiB
+
+==============================================================================
+OOM PROBE COMPLETE
+==============================================================================
+Saved: raw/attention/naive_oom_step3_4090.csv

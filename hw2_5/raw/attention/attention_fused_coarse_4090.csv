@@ -1,0 +1,7 @@
+timestamp,gpu_label,gpu_name,gpu_uuid,mode,backend,sequence_length,batch_size,num_heads,head_dim,dtype,warmup,repetitions,baseline_memory_gib,peak_allocated_gib,peak_reserved_gib,median_latency_ms,mean_latency_ms,stdev_latency_ms,status,error
+2026-09-10T16:40:10.533086,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,fused,flash_attention,512,4,8,64,BF16,2,5,,,,,,,FAILED,RuntimeError: No available kernel. Aborting execution.
+2026-09-10T16:40:10.608425,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,fused,flash_attention,1024,4,8,64,BF16,2,5,,,,,,,FAILED,RuntimeError: No available kernel. Aborting execution.
+2026-09-10T16:40:10.649301,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,fused,flash_attention,2048,4,8,64,BF16,2,5,,,,,,,FAILED,RuntimeError: No available kernel. Aborting execution.
+2026-09-10T16:40:10.688760,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,fused,flash_attention,4096,4,8,64,BF16,2,5,,,,,,,FAILED,RuntimeError: No available kernel. Aborting execution.
+2026-09-10T16:40:10.733440,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,fused,flash_attention,8192,4,8,64,BF16,2,5,,,,,,,FAILED,RuntimeError: No available kernel. Aborting execution.
+2026-09-10T16:40:10.782642,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,fused,flash_attention,16384,4,8,64,BF16,2,5,,,,,,,FAILED,RuntimeError: No available kernel. Aborting execution.

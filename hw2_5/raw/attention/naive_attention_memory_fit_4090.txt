@@ -1,0 +1,15 @@
+HW2.5 PART D4 — NAIVE ATTENTION MEMORY FIT
+======================================================================
+
+L=512, peak_memory_gib=0.0469970703125
+L=1024, peak_memory_gib=0.1485595703125
+L=2048, peak_memory_gib=0.5391845703125
+L=4096, peak_memory_gib=2.0704345703125
+L=8192, peak_memory_gib=8.1329345703125
+L=16384, peak_memory_gib=32.2579345703125
+
+M(L) = 1.192092895508e-07 * L^2 + 1.525878906250e-05 * L + 7.934570312501e-03
+Quadratic coefficient a = 1.192092895508e-07 GiB/token^2
+Linear coefficient b = 1.525878906250e-05 GiB/token
+Constant coefficient c = 7.934570312501e-03 GiB
+R^2 = 1.000000000000

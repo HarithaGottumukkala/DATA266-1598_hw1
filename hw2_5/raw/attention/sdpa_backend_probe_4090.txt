@@ -1,0 +1,43 @@
+==============================================================================
+HW2.5 PART D ù SDPA BACKEND PROBE
+==============================================================================
+PyTorch: 2.11.0+cu128
+CUDA runtime: 12.8
+GPU: NVIDIA GeForce RTX 4090
+GPU UUID: GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+
+Test configuration:
+Batch size: 4
+Heads: 8
+Sequence length: 512
+Head dimension: 64
+Precision: BF16
+==============================================================================
+
+------------------------------------------------------------------------------
+Testing: FLASH_ATTENTION
+Status: FAILED
+Exception: RuntimeError
+Message: No available kernel. Aborting execution.
+
+------------------------------------------------------------------------------
+Testing: EFFICIENT_ATTENTION
+Status: SUCCESS
+Output shape: (4, 8, 512, 64)
+Output dtype: torch.bfloat16
+
+------------------------------------------------------------------------------
+Testing: CUDNN_ATTENTION
+Status: SUCCESS
+Output shape: (4, 8, 512, 64)
+Output dtype: torch.bfloat16
+
+------------------------------------------------------------------------------
+Testing: MATH
+Status: SUCCESS
+Output shape: (4, 8, 512, 64)
+Output dtype: torch.bfloat16
+
+==============================================================================
+BACKEND PROBE COMPLETE
+==============================================================================

@@ -1,0 +1,2 @@
+timestamp,gpu_label,gpu_name,gpu_uuid,mode,backend,sequence_length,batch_size,num_heads,head_dim,dtype,warmup,repetitions,baseline_memory_gib,peak_allocated_gib,peak_reserved_gib,median_latency_ms,mean_latency_ms,stdev_latency_ms,status,error
+2026-09-10T16:08:11.458711,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,naive,explicit_naive,16384,4,8,64,BF16,2,5,0.1954345703125,32.2579345703125,32.26953125,2409.910888671875,2432.93349609375,43.98067077995537,SUCCESS,

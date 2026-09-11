@@ -1,0 +1,88 @@
+================================================================================
+HW2.5 PART D - ATTENTION BENCHMARK
+================================================================================
+Timestamp          : 2026-09-10T16:49:38.213366
+GPU                : NVIDIA GeForce RTX 4090
+GPU UUID           : GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+Visible VRAM       : 23.988 GiB
+Mode               : fused
+Backend            : efficient_attention
+Batch size         : 4
+Number of heads    : 8
+Head dimension     : 64
+Precision          : BF16
+Warmup iterations  : 2
+Timed repetitions  : 5
+Sequence lengths   : [512, 1024, 2048, 4096, 8192, 16384]
+================================================================================
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=512 ...
+Status              : SUCCESS
+Backend             : efficient_attention
+Baseline allocated  : 0.006 GiB
+Peak allocated      : 0.008 GiB
+Peak reserved       : 0.020 GiB
+Median latency      : 0.127 ms
+Mean latency        : 0.128 ms
+Latency std dev     : 0.006 ms
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=1024 ...
+Status              : SUCCESS
+Backend             : efficient_attention
+Baseline allocated  : 0.012 GiB
+Peak allocated      : 0.016 GiB
+Peak reserved       : 0.020 GiB
+Median latency      : 0.139 ms
+Mean latency        : 0.140 ms
+Latency std dev     : 0.005 ms
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=2048 ...
+Status              : SUCCESS
+Backend             : efficient_attention
+Baseline allocated  : 0.023 GiB
+Peak allocated      : 0.031 GiB
+Peak reserved       : 0.039 GiB
+Median latency      : 0.352 ms
+Mean latency        : 0.354 ms
+Latency std dev     : 0.005 ms
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=4096 ...
+Status              : SUCCESS
+Backend             : efficient_attention
+Baseline allocated  : 0.047 GiB
+Peak allocated      : 0.062 GiB
+Peak reserved       : 0.062 GiB
+Median latency      : 1.181 ms
+Mean latency        : 1.184 ms
+Latency std dev     : 0.008 ms
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=8192 ...
+Status              : SUCCESS
+Backend             : efficient_attention
+Baseline allocated  : 0.094 GiB
+Peak allocated      : 0.125 GiB
+Peak reserved       : 0.125 GiB
+Median latency      : 4.741 ms
+Mean latency        : 4.636 ms
+Latency std dev     : 0.167 ms
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=16384 ...
+Status              : SUCCESS
+Backend             : efficient_attention
+Baseline allocated  : 0.188 GiB
+Peak allocated      : 0.250 GiB
+Peak reserved       : 0.250 GiB
+Median latency      : 17.264 ms
+Mean latency        : 17.280 ms
+Latency std dev     : 0.156 ms
+
+================================================================================
+ATTENTION BENCHMARK COMPLETE
+================================================================================
+Saved: raw/attention/attention_fused_efficient_coarse_4090.csv

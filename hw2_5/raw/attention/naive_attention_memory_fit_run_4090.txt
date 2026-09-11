@@ -1,0 +1,24 @@
+==============================================================================
+HW2.5 PART D4 ù NAIVE ATTENTION MEMORY FIT
+==============================================================================
+Input: raw/attention/attention_naive_coarse_4090.csv
+
+Measured points:
+L=  512  Peak memory=0.046997 GiB
+L= 1024  Peak memory=0.148560 GiB
+L= 2048  Peak memory=0.539185 GiB
+L= 4096  Peak memory=2.070435 GiB
+L= 8192  Peak memory=8.132935 GiB
+L=16384  Peak memory=32.257935 GiB
+
+Quadratic fit:
+M(L) = 1.192092895508e-07 * L^2 + 1.525878906250e-05 * L + 7.934570312501e-03
+
+Quadratic coefficient a: 1.192092895508e-07 GiB/token^2
+Linear coefficient b: 1.525878906250e-05 GiB/token
+Constant coefficient c: 7.934570312501e-03 GiB
+R^2: 1.000000000000
+
+Saved text: raw/attention/naive_attention_memory_fit_4090.txt
+Saved figure: figures/naive_attention_memory_fit_4090.png
+==============================================================================

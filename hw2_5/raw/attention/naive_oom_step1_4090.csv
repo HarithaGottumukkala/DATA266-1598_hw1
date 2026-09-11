@@ -1,0 +1,2 @@
+timestamp,gpu_label,gpu_name,gpu_uuid,sequence_length,batch_size,num_heads,head_dim,dtype,status,peak_allocated_gib,error
+2026-09-10T16:16:56.113136,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,17408,4,8,64,BF16,SUCCESS,36.3985595703125,

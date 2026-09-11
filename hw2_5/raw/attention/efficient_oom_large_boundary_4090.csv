@@ -1,0 +1,4 @@
+timestamp,gpu_label,gpu_name,gpu_uuid,backend,sequence_length,batch_size,num_heads,head_dim,dtype,baseline_memory_gib,peak_allocated_gib,peak_reserved_gib,latency_ms,status,error
+2026-09-10T17:00:19.393806,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,efficient_attention,524288,4,8,64,BF16,6.0,8.0,8.0,18555.8984375,SUCCESS,
+2026-09-10T17:01:38.428714,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,efficient_attention,1048576,4,8,64,BF16,12.0,16.0,16.0,78659.8671875,SUCCESS,
+2026-09-10T17:04:41.885651,4090,NVIDIA GeForce RTX 4090,GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f,efficient_attention,1572864,4,8,64,BF16,18.0,24.0,24.0,182901.6875,SUCCESS,

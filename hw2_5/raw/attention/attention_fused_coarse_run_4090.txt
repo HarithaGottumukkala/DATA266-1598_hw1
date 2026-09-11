@@ -1,0 +1,50 @@
+================================================================================
+HW2.5 PART D ù ATTENTION BENCHMARK
+================================================================================
+Timestamp          : 2026-09-10T16:40:10.347740
+GPU                : NVIDIA GeForce RTX 4090
+GPU UUID           : GPU-b60240a9-31a3-126f-751f-afc1dcc1d73f
+Mode               : fused
+Batch size         : 4
+Number of heads    : 8
+Head dimension     : 64
+Precision          : BF16
+Warmup iterations  : 2
+Timed repetitions  : 5
+Sequence lengths   : [512, 1024, 2048, 4096, 8192, 16384]
+================================================================================
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=512 ...
+Status              : FAILED
+Error               : RuntimeError: No available kernel. Aborting execution.
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=1024 ...
+Status              : FAILED
+Error               : RuntimeError: No available kernel. Aborting execution.
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=2048 ...
+Status              : FAILED
+Error               : RuntimeError: No available kernel. Aborting execution.
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=4096 ...
+Status              : FAILED
+Error               : RuntimeError: No available kernel. Aborting execution.
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=8192 ...
+Status              : FAILED
+Error               : RuntimeError: No available kernel. Aborting execution.
+
+--------------------------------------------------------------------------------
+Running FUSED attention at L=16384 ...
+Status              : FAILED
+Error               : RuntimeError: No available kernel. Aborting execution.
+
+================================================================================
+ATTENTION BENCHMARK COMPLETE
+================================================================================
+Saved: raw/attention/attention_fused_coarse_4090.csv

@@ -1,0 +1,43 @@
+==============================================================================
+HW2.5 PART E - SUSTAINED COMPUTE ANALYSIS
+==============================================================================
+GPU label: 4090
+Telemetry samples: 238
+Throughput samples: 8727
+Last telemetry timestamp: 1198.02 s
+
+FIRST 30 SECONDS
+------------------------------------------------------------------------------
+Peak throughput: 168.96 TFLOPS
+Average throughput: 162.76 TFLOPS
+Average SM clock: 2537.50 MHz
+Average temperature: 55.67 C
+Average power: 377.17 W
+
+LAST FIVE MINUTES
+------------------------------------------------------------------------------
+Average throughput: 160.11 TFLOPS
+Peak throughput: 161.96 TFLOPS
+Average SM clock: 2488.00 MHz
+Average temperature: 75.97 C
+Average power: 449.55 W
+Average GPU utilization: 99.98%
+
+FULL-RUN SUMMARY
+------------------------------------------------------------------------------
+Maximum temperature: 77.00 C
+Average power: 447.70 W
+Maximum power: 451.02 W
+Configured power limit: 450.00 W
+Throughput change (first-30s peak -> final-5min average): -5.24%
+Clock change (first-30s average -> final-5min average): -1.95%
+
+INTERPRETATION
+------------------------------------------------------------------------------
+The GPU operated very close to its configured power limit during steady state. The clock reduction is therefore more consistent with power-limited boost behavior than severe thermal throttling.
+
+==============================================================================
+
+Saved analysis: raw\thermal\thermal_analysis_4090.txt
+Saved clock plot: figures\thermal_clock_4090.png
+Saved temperature plot: figures\thermal_temperature_4090.png
