@@ -1,0 +1,5 @@
+Run the Colab notebook from top to bottom.
+Exact training calls:
+unmasked_losses, unmasked_metrics = train_attention(unmasked_model, "unmasked")
+masked_losses, masked_metrics = train_attention(masked_model, "masked")
+Seed=1598; epochs=400; learning_rate=0.01; embedding_dim=64; device=cpu
