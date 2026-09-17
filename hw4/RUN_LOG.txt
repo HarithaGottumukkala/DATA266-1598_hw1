@@ -1,0 +1,117 @@
+[2026-09-17T11:29:04-07:00] Python: 3.13.9 | PyTorch: 2.14.0
+[2026-09-17T11:29:04-07:00] Device: cpu | Seed: 1598
+[2026-09-17T11:29:04-07:00] Characters: 1738 | Vocabulary: 49
+[2026-09-17T11:29:04-07:00] Training pairs: 1610 | Parameters: 425777
+[2026-09-17T11:29:04-07:00] Hidden dimension: 128 | Heads: 4 | Layers: 2
+[2026-09-17T11:29:04-07:00] Optimizer: Adam | Learning rate: 0.0003 | Batch size: 32
+[2026-09-17T11:29:08-07:00] Epoch 1/8 | Loss: 3.1064
+[2026-09-17T11:29:12-07:00] Epoch 2/8 | Loss: 2.4798
+[2026-09-17T11:29:16-07:00] Epoch 3/8 | Loss: 2.2785
+[2026-09-17T11:29:19-07:00] Epoch 4/8 | Loss: 2.1753
+[2026-09-17T11:29:23-07:00] Epoch 5/8 | Loss: 2.1050
+[2026-09-17T11:29:27-07:00] Epoch 6/8 | Loss: 2.0409
+[2026-09-17T11:29:31-07:00] Epoch 7/8 | Loss: 1.9715
+[2026-09-17T11:29:34-07:00] Epoch 8/8 | Loss: 1.8965
+[2026-09-17T11:30:41-07:00] Greedy decoding:
+ROMEO:
+I thy thame noull I thame, thame the the the thais:
+He the nathe the the nathe ne ne namyspamamys ine ne athe nathe ne ispathe is
+Souse is
+The the ses
+Thes s es s espallllll all al all es al al eeeees al al al al ak eeespes al eeeeespes
+
+
+
+
+
+T:
+T:
+I buthees but but buspuspespes s spen es espespespe
+[2026-09-17T11:30:45-07:00] 
+Temperature 0.5
+----------------------------------------
+ROMEO:
+What name thame
+Why name name
+I amend of whe
+I se
+Hames sellll al at t are bot at
+JULIEOMEO:
+He t see t weee I nout thake amy akshat sheell theshe bul beswiswill t t akswilll bes t akspe st IEThe e spee thee is:
+
+Bespun buspusptheeel aspes eeail s
+Hayspus ee, eal bus?
+
+I t t eet therealll yeeeak t 
+
+[2026-09-17T11:30:45-07:00] 
+Temperature 1.0
+----------------------------------------
+ROMEO:
+Weat be but namamy blt id iny e, nononof llech oulll my hy at;
+OMy IEO, me bory;
+
+J.
+Whore but, t’s ais pe;
+
+I nowortha m ho a wo cat fart te malo Rolo be the
+What thaks name, age, my an sthakshall sere pece ind meenoul By my athis ce,
+Be l he wheainot,
+He!
+, halth we t s thathiloulr alout he ghhou
+
+[2026-09-17T11:30:46-07:00] 
+Temperature 1.5
+----------------------------------------
+ROMEO:
+Weat befucos ngall?
+It Mw ik ULI grn nof latcwhoueve!
+Why;LIt; d, amul my dyos, am,.
+Whot! bul? t’s ai? peca;I n wurnzh f ho a wo ca, freltEetis w RoloULUzerwilort Rovembull
+DNowo,
+T;
+We st I
+Shr m;
+
+IEOpkel Shamy tho!EJBy ! o,Mo izer, wo lfacew thitot, t,! , halthove t s thueetloulrnaloULyee ghhot
+
+[2026-09-17T11:30:48-07:00] 
+Top-k 2
+----------------------------------------
+ROMEO:
+I thame
+I nome that thou name nore no whe the the
+RO:
+I name nome thar thame nou tame
+Rome
+I name
+O:
+I’se
+I t name
+Rome
+Whathame
+IEThomel that t t thame noull t nelll w that the noul the
+Soul t tous wousel that t that t noul wouee t the wo the welo thathee wee theel thespeswous
+
+Hakswe t spe t the 
+
+[2026-09-17T11:30:49-07:00] 
+Top-k 20
+----------------------------------------
+ROMEO:
+BMEO:
+O:
+H Roull beo!
+T:
+RNy Rwhy ard fomermy inakerewh but me s ha whad d ag:
+Nome?
+Showo!
+JULI s ofat s an kld pana I nousw ameeef athathe, sw shy themey nat, hand, ay w w hershe!
+Shoume f ny poo totheme ithilisul d oe?
+
+Be, mal w ise ne osenourtoosal nge bor I wof, ne theno noworsicind,
+Beat?
+I 
+
+[2026-09-17T11:30:54-07:00] Saved mini_gpt_1598.pt and results.json.
+[2026-09-17T11:30:55-07:00] Saved METRICS.md and TRAINING_COMMAND.txt.

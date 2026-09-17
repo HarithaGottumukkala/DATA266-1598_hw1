@@ -1,0 +1,5 @@
+Original run: executed the notebook cells in order in Jupyter.
+To reproduce: keep shakespeare.txt beside the notebook and run all cells from a fresh kernel.
+
+Equivalent command-line execution after saving the notebook:
+jupyter nbconvert --to notebook --execute "Homework4_1598.ipynb" --output "Homework4_1598_executed.ipynb" --ExecutePreprocessor.timeout=1800
