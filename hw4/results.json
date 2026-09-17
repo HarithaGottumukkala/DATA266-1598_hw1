@@ -1,0 +1,51 @@
+{
+  "personal_parameters": {
+    "SID4": 1598,
+    "SEED": 1598,
+    "SLICE": 598,
+    "HP_ID": 2,
+    "CLS_A": 8,
+    "CLS_B": 5
+  },
+  "environment": {
+    "python": "3.13.9",
+    "pytorch": "2.14.0",
+    "numpy": "2.3.5",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "device": "cpu"
+  },
+  "config": {
+    "vocab_size": 49,
+    "d_model": 128,
+    "n_heads": 4,
+    "n_layers": 2,
+    "seq_len": 128
+  },
+  "total_characters": 1738,
+  "training_pairs": 1610,
+  "parameter_count": 425777,
+  "optimizer": "Adam",
+  "learning_rate": 0.0003,
+  "batch_size": 32,
+  "epochs": 8,
+  "losses": [
+    3.1064009559820898,
+    2.4797559951403128,
+    2.2784983362470355,
+    2.1753385052177476,
+    2.1049895165129477,
+    2.0408873178944082,
+    1.9715390747378332,
+    1.8964535825741218
+  ],
+  "prompt": "ROMEO:",
+  "generated_characters": 300,
+  "samples": {
+    "Greedy": "ROMEO:\nI thy thame noull I thame, thame the the the thais:\nHe the nathe the the nathe ne ne namyspamamys ine ne athe nathe ne ispathe is\nSouse is\nThe the ses\nThes s es s espallllll all al all es al al eeeees al al al al ak eeespes al eeeeespes\n\n\n\n\n\nT:\nT:\nI buthees but but buspuspespes s spen es espespespe",
+    "Temperature 0.5": "ROMEO:\nWhat name thame\nWhy name name\nI amend of whe\nI se\nHames sellll al at t are bot at\nJULIEOMEO:\nHe t see t weee I nout thake amy akshat sheell theshe bul beswiswill t t akswilll bes t akspe st IEThe e spee thee is:\n\nBespun buspusptheeel aspes eeail s\nHayspus ee, eal bus?\n\nI t t eet therealll yeeeak t ",
+    "Temperature 1.0": "ROMEO:\nWeat be but namamy blt id iny e, nononof llech oulll my hy at;\nOMy IEO, me bory;\n\nJ.\nWhore but, t’s ais pe;\n\nI nowortha m ho a wo cat fart te malo Rolo be the\nWhat thaks name, age, my an sthakshall sere pece ind meenoul By my athis ce,\nBe l he wheainot,\nHe!\n, halth we t s thathiloulr alout he ghhou",
+    "Temperature 1.5": "ROMEO:\nWeat befucos ngall?\nIt Mw ik ULI grn nof latcwhoueve!\nWhy;LIt; d, amul my dyos, am,.\nWhot! bul? t’s ai? peca;I n wurnzh f ho a wo ca, freltEetis w RoloULUzerwilort Rovembull\nDNowo,\nT;\nWe st I\nShr m;\n\nIEOpkel Shamy tho!EJBy ! o,Mo izer, wo lfacew thitot, t,! , halthove t s thueetloulrnaloULyee ghhot",
+    "Top-k 2": "ROMEO:\nI thame\nI nome that thou name nore no whe the the\nRO:\nI name nome thar thame nou tame\nRome\nI name\nO:\nI’se\nI t name\nRome\nWhathame\nIEThomel that t t thame noull t nelll w that the noul the\nSoul t tous wousel that t that t noul wouee t the wo the welo thathee wee theel thespeswous\n\nHakswe t spe t the ",
+    "Top-k 20": "ROMEO:\nBMEO:\nO:\nH Roull beo!\nT:\nRNy Rwhy ard fomermy inakerewh but me s ha whad d ag:\nNome?\nShowo!\nJULI s ofat s an kld pana I nousw ameeef athathe, sw shy themey nat, hand, ay w w hershe!\nShoume f ny poo totheme ithilisul d oe?\n\nBe, mal w ise ne osenourtoosal nge bor I wof, ne theno noworsicind,\nBeat?\nI "
+  }
+}
