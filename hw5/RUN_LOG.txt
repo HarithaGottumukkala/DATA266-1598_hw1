@@ -1,0 +1,69 @@
+DATA 266 — LoRA Fine-Tuning Run Log
+Generated: 2026-09-26T00:05:17.734630
+
+PERSONAL PARAMETERS
+-------------------
+SID4: 1598
+SEED: 1598
+SLICE: 598
+HP_ID: 2
+CLS_A: 8
+CLS_B: 5
+
+RUNTIME
+-------
+PyTorch: 2.11.0+cu128
+CUDA available: True
+Device: cuda
+GPU: Tesla T4
+
+DATASET
+-------
+Training examples: 1999
+Validation examples: 499
+Evaluation test indices: [240, 216]
+
+MODEL
+-----
+Base model: google/flan-t5-small
+
+LORA r=4
+---------
+Rank: 4
+Alpha: 16
+Dropout: 0.05
+Target modules: q, v
+Trainable parameters: 172,032
+Trainable percentage: 0.2230%
+Pre-training batch loss: 2.2771
+Average training loss: 3.4834
+Validation loss: 1.4146
+Global steps: 250
+Training time: 2.70 minutes
+Adapter: dialogsum_lora_r4_adapter
+
+LORA r=16
+----------
+Rank: 16
+Alpha: 16
+Dropout: 0.05
+Target modules: q, v
+Trainable parameters: 688,128
+Trainable percentage: 0.8862%
+Pre-training batch loss: 2.2771
+Average training loss: 3.4987
+Validation loss: 1.4198
+Global steps: 250
+Training time: 2.79 minutes
+Adapter: dialogsum_lora_r16_adapter
+
+OUTPUT FILES
+------------
+baseline_outputs.json
+r4_finetuned_outputs.json
+r16_finetuned_outputs.json
+baseline_vs_r4_comparison.csv
+lora_rank_metrics_comparison.csv
+r4_vs_r16_output_comparison.csv
+METRICS.md
+RUN_LOG.txt

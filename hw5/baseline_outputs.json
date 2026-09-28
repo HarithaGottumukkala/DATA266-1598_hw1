@@ -1,0 +1,16 @@
+[
+  {
+    "example": 1,
+    "test_index": 240,
+    "dialogue": "#Person1#: Hello. Is this ABC Rent-a-car Company?\n#Person2#: Yes, speaking. May I help you?\n#Person1#: This morning we rented a car and we are on the way to Niagara Falls. I'm afraid we have a car accident near the border.\n#Person2#: That's too bad. What kind of accident is it? Are you all right?\n#Person1#: I'm all right, but my friend is seriously injured. Will you call an ambulance and the police?\n#Person2#: OK. I'll do it right away, but tell me how it happened.\n#Person1#: I ran into the guardrail when I turned to the left.",
+    "reference_summary": "#Person1# rent a car from ABC Rent-a-car Company this morning and met an accident. #Person2# will call an ambulance and police for #Person1#.",
+    "baseline_summary": "I ran into the guardrail and got into a car."
+  },
+  {
+    "example": 2,
+    "test_index": 216,
+    "dialogue": "#Person1#: We need to do a group report tomorrow. I need to go to the stationer to buy something for the posters.\n#Person2#: You need to make posters?\n#Person1#: absolutely. Every time when we do the reports, we love making some beautiful posters to emphasize our theme ideas.\n#Person2#: I see. Then let's make a shopping list first before we go there. othe rise, It may take us a whole day to search for the things you need.\n#Person1#: No problem. I need some markers, some color pencils, a pair of scissors, some highlighter, rulers. .\n#Person2#: Wow, it is like a maze, I think I might get lost soon.\n#Person1#: Don't worry. In fact, it is very easy to find what you want. Can you see the sign on top of every shelf. It clearly tells you what things are displayed on every shelf.\n#Person2#: Oh, yes. You are so smart. I see them. So I have to go to shelf number 3 first to get my markers, color pencils and highlighters and somebrushes.\n#Person1#: I also need some thumbtacks, whiteout and paper clips. Which shelf are they on? I can't find the number.\n#Person2#: It's at the back. I think you are near-sighted. You had better get yourself a pair of nice glasses.",
+    "reference_summary": "#Person1# and #Person2# will do a group report, so they plan to buy something to make posters. They make a shopping list before they go and find items according to signs on shelves.",
+    "baseline_summary": "I need to do a group report tomorrow. I need to do a group report tomorrow. I need to go to the stationer to buy something for the posters. I need markers, color pencils, a pair of scissors, a pair of highlighter, rulers. I need markers, color pencils and highlighters. I need markers, color pencils and highlighters"
+  }
+]
