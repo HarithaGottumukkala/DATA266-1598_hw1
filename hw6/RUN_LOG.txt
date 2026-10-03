@@ -1,0 +1,67 @@
+STL-10 Representation Learning Run Log
+=============================================
+Created: 2026-09-30 09:29:55.769447
+SID4: 1598
+SEED: 1598
+Device: cuda
+GPU: Tesla T4
+PyTorch: 2.11.0+cu128
+Torchvision: 0.26.0+cu128
+
+Supervised Epoch 01 | Loss 2.2059 | Accuracy 19.80%
+Supervised Epoch 02 | Loss 1.9465 | Accuracy 30.80%
+Supervised Epoch 03 | Loss 1.7964 | Accuracy 31.00%
+Supervised Epoch 04 | Loss 1.6193 | Accuracy 34.60%
+Supervised Epoch 05 | Loss 1.4947 | Accuracy 43.00%
+Supervised Epoch 06 | Loss 1.4020 | Accuracy 47.40%
+Supervised Epoch 07 | Loss 1.3577 | Accuracy 51.20%
+Supervised Epoch 08 | Loss 1.2061 | Accuracy 55.20%
+Supervised Epoch 09 | Loss 1.1075 | Accuracy 60.00%
+Supervised Epoch 10 | Loss 1.0440 | Accuracy 60.20%
+Supervised Epoch 11 | Loss 0.9255 | Accuracy 65.20%
+Supervised Epoch 12 | Loss 0.8540 | Accuracy 68.60%
+Supervised Epoch 13 | Loss 0.7834 | Accuracy 73.40%
+Supervised Epoch 14 | Loss 0.7357 | Accuracy 75.20%
+Supervised Epoch 15 | Loss 0.7205 | Accuracy 75.40%
+Supervised Test | Loss 1.6781 | Accuracy 44.15%
+Rotation Epoch 01 | Loss 1.1378 | Accuracy 45.48% | Time 2.09 min
+Rotation Epoch 02 | Loss 0.9839 | Accuracy 52.89% | Time 2.26 min
+Rotation Epoch 03 | Loss 0.9192 | Accuracy 55.14% | Time 2.17 min
+Rotation Epoch 04 | Loss 0.8783 | Accuracy 56.74% | Time 2.13 min
+Rotation Epoch 05 | Loss 0.8532 | Accuracy 58.05% | Time 2.13 min
+Rotation Epoch 06 | Loss 0.8236 | Accuracy 59.00% | Time 2.14 min
+Rotation Epoch 07 | Loss 0.8019 | Accuracy 59.82% | Time 2.14 min
+Rotation Epoch 08 | Loss 0.7837 | Accuracy 60.60% | Time 2.11 min
+Rotation Epoch 09 | Loss 0.7643 | Accuracy 61.55% | Time 2.12 min
+Rotation Epoch 10 | Loss 0.7475 | Accuracy 62.21% | Time 2.12 min
+Rotation Epoch 11 | Loss 0.7305 | Accuracy 62.63% | Time 2.08 min
+Rotation Epoch 12 | Loss 0.7215 | Accuracy 62.81% | Time 1.88 min
+Rotation Epoch 13 | Loss 0.7079 | Accuracy 63.44% | Time 1.87 min
+Rotation Epoch 14 | Loss 0.7016 | Accuracy 63.93% | Time 1.87 min
+Rotation Epoch 15 | Loss 0.6958 | Accuracy 64.08% | Time 1.92 min
+Rotation Test | Loss 1.6903 | Accuracy 41.49%
+SimCLR Epoch 01 | Loss 3.2136 | Time 1.84 min
+SimCLR Epoch 02 | Loss 2.2175 | Time 1.84 min
+SimCLR Epoch 03 | Loss 2.0187 | Time 1.84 min
+SimCLR Epoch 04 | Loss 1.9145 | Time 1.88 min
+SimCLR Epoch 05 | Loss 1.8524 | Time 1.84 min
+SimCLR Epoch 06 | Loss 1.8044 | Time 1.87 min
+SimCLR Epoch 07 | Loss 1.7676 | Time 1.86 min
+SimCLR Epoch 08 | Loss 1.7299 | Time 1.85 min
+SimCLR Epoch 09 | Loss 1.7005 | Time 1.82 min
+SimCLR Epoch 10 | Loss 1.6794 | Time 1.83 min
+SimCLR Epoch 11 | Loss 1.6609 | Time 1.76 min
+SimCLR Epoch 12 | Loss 1.6376 | Time 1.88 min
+SimCLR Epoch 13 | Loss 1.6198 | Time 1.91 min
+SimCLR Epoch 14 | Loss 1.6032 | Time 1.86 min
+SimCLR Epoch 15 | Loss 1.5907 | Time 1.83 min
+SimCLR Epoch 16 | Loss 1.5790 | Time 1.86 min
+SimCLR Epoch 17 | Loss 1.5674 | Time 1.84 min
+SimCLR Epoch 18 | Loss 1.5666 | Time 1.90 min
+SimCLR Epoch 19 | Loss 1.5635 | Time 1.88 min
+SimCLR Epoch 20 | Loss 1.5637 | Time 1.90 min
+SimCLR Test | Loss 1.4308 | Accuracy 48.48%
+
+Observed warning:
+AssertionError: can only test a child process
+Fix: Changed DataLoader num_workers from 2 to 0.

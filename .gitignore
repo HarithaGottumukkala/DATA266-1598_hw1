@@ -4,3 +4,10 @@ __pycache__/
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
+
+# HW6 downloaded dataset and model checkpoints
+hw6/data/
+hw6/Checkpoints/
+/hw6/data/
+/hw6/Checkpoints/rotation_latest.pt
+/hw6/Checkpoints/simclr_latest.pt
