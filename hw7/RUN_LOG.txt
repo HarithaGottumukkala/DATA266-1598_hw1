@@ -1,0 +1,76 @@
+DATA 266 - Homework 7
+FC-AE and VAE Training Run Log
+=================================================================
+Log generated (UTC): 2026-10-08T07:00:48.101815+00:00
+NOTE: Per-epoch metrics reconstructed from notebook arrays.
+Original epoch timestamps and uncaptured console errors unavailable.
+Training durations were recorded during the original runs.
+
+ENVIRONMENT
+Python: 3.13.16
+PyTorch: 2.11.0+cpu
+Device: cpu
+SID4: 1598
+SEED: 1598
+Training samples: 60000
+Testing samples: 10000
+Batch size: 128
+Latent dimension: 32
+
+=================================================================
+MODEL 1: FULLY CONNECTED AUTOENCODER
+=================================================================
+Epoch 01/15 | Train MSE: 0.044210 | Test MSE: 0.025872
+Epoch 02/15 | Train MSE: 0.023357 | Test MSE: 0.021526
+Epoch 03/15 | Train MSE: 0.020151 | Test MSE: 0.019197
+Epoch 04/15 | Train MSE: 0.018594 | Test MSE: 0.017994
+Epoch 05/15 | Train MSE: 0.017452 | Test MSE: 0.016980
+Epoch 06/15 | Train MSE: 0.016583 | Test MSE: 0.016289
+Epoch 07/15 | Train MSE: 0.015894 | Test MSE: 0.015679
+Epoch 08/15 | Train MSE: 0.015267 | Test MSE: 0.015038
+Epoch 09/15 | Train MSE: 0.014779 | Test MSE: 0.014687
+Epoch 10/15 | Train MSE: 0.014403 | Test MSE: 0.014418
+Epoch 11/15 | Train MSE: 0.014061 | Test MSE: 0.014014
+Epoch 12/15 | Train MSE: 0.013775 | Test MSE: 0.013898
+Epoch 13/15 | Train MSE: 0.013513 | Test MSE: 0.013460
+Epoch 14/15 | Train MSE: 0.013302 | Test MSE: 0.013321
+Epoch 15/15 | Train MSE: 0.013095 | Test MSE: 0.013123
+
+FC-AE training time: 191.43 seconds
+FC-AE final train MSE: 0.013095
+FC-AE final test MSE: 0.013123
+FC-AE checkpoint: fc_ae_checkpoint.pt
+
+=================================================================
+MODEL 2: VARIATIONAL AUTOENCODER
+=================================================================
+Epoch 01/15 | Train Total: 312.7631 | Recon: 301.8091 | KL: 10.9539 | Test MSE: 0.032589
+Epoch 02/15 | Train Total: 269.3132 | Recon: 256.5011 | KL: 12.8121 | Test MSE: 0.026831
+Epoch 03/15 | Train Total: 260.0283 | Recon: 247.9727 | KL: 12.0556 | Test MSE: 0.024202
+Epoch 04/15 | Train Total: 254.6444 | Recon: 243.0942 | KL: 11.5502 | Test MSE: 0.022392
+Epoch 05/15 | Train Total: 251.4211 | Recon: 240.0829 | KL: 11.3382 | Test MSE: 0.021433
+Epoch 06/15 | Train Total: 249.5586 | Recon: 238.2100 | KL: 11.3486 | Test MSE: 0.020631
+Epoch 07/15 | Train Total: 248.2693 | Recon: 236.8699 | KL: 11.3995 | Test MSE: 0.020321
+Epoch 08/15 | Train Total: 247.3070 | Recon: 235.8351 | KL: 11.4719 | Test MSE: 0.019974
+Epoch 09/15 | Train Total: 246.5877 | Recon: 235.0764 | KL: 11.5113 | Test MSE: 0.019696
+Epoch 10/15 | Train Total: 245.9804 | Recon: 234.4218 | KL: 11.5586 | Test MSE: 0.019620
+Epoch 11/15 | Train Total: 245.4631 | Recon: 233.8945 | KL: 11.5686 | Test MSE: 0.019189
+Epoch 12/15 | Train Total: 245.0189 | Recon: 233.3925 | KL: 11.6264 | Test MSE: 0.018991
+Epoch 13/15 | Train Total: 244.5907 | Recon: 232.9290 | KL: 11.6618 | Test MSE: 0.018935
+Epoch 14/15 | Train Total: 244.2742 | Recon: 232.5733 | KL: 11.7009 | Test MSE: 0.019029
+Epoch 15/15 | Train Total: 243.9074 | Recon: 232.1943 | KL: 11.7131 | Test MSE: 0.018722
+
+VAE training time: 208.80 seconds
+VAE final total train loss: 243.9074
+VAE final test total loss: 245.4949
+VAE final sampled test MSE: 0.018722
+VAE checkpoint: vae_checkpoint.pt
+
+=================================================================
+FINAL DETERMINISTIC RECONSTRUCTION EVALUATION
+=================================================================
+FC-AE Test MSE: 0.013123
+VAE Test MSE: 0.017353
+
+The original runs completed and saved checkpoints.
+No claim is made about errors not captured in original logs.
