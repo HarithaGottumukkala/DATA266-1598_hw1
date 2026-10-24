@@ -1,0 +1,113 @@
+HOMEWORK 8 - DIFFUSION MODEL RUN LOG
+=======================================================
+Report generated: 2026-10-24T07:34:28+00:00
+Python version: 3.13.16
+PyTorch version: 2.11.0+cu130
+Device: cuda
+Hardware: Tesla T4
+Random seed configured: 42
+
+DATASET
+-------------------------------------------------------
+Training images: 60000
+Testing images: 10000
+Batch size: 128
+
+DIFFUSION CONFIGURATION
+-------------------------------------------------------
+Total steps: 100
+Beta start: 0.000100
+Beta end: 0.020000
+
+MODEL CONFIGURATION
+-------------------------------------------------------
+Convolutional layers: 6
+Total parameters: 355009
+Optimizer: Adam
+Learning rate: 0.001
+Loss function: MSE
+
+TRAINING HISTORY
+-------------------------------------------------------
+Epoch 01/50 | Average MSE: 0.177486
+Epoch 02/50 | Average MSE: 0.086592
+Epoch 03/50 | Average MSE: 0.079457
+Epoch 04/50 | Average MSE: 0.075087
+Epoch 05/50 | Average MSE: 0.073670
+Epoch 06/50 | Average MSE: 0.071767
+Epoch 07/50 | Average MSE: 0.070746
+Epoch 08/50 | Average MSE: 0.069880
+Epoch 09/50 | Average MSE: 0.068562
+Epoch 10/50 | Average MSE: 0.068460
+Epoch 11/50 | Average MSE: 0.067426
+Epoch 12/50 | Average MSE: 0.067326
+Epoch 13/50 | Average MSE: 0.066426
+Epoch 14/50 | Average MSE: 0.065679
+Epoch 15/50 | Average MSE: 0.065878
+Epoch 16/50 | Average MSE: 0.065105
+Epoch 17/50 | Average MSE: 0.064591
+Epoch 18/50 | Average MSE: 0.064408
+Epoch 19/50 | Average MSE: 0.064412
+Epoch 20/50 | Average MSE: 0.064511
+Epoch 21/50 | Average MSE: 0.063864
+Epoch 22/50 | Average MSE: 0.063351
+Epoch 23/50 | Average MSE: 0.063647
+Epoch 24/50 | Average MSE: 0.063262
+Epoch 25/50 | Average MSE: 0.062878
+Epoch 26/50 | Average MSE: 0.062952
+Epoch 27/50 | Average MSE: 0.062386
+Epoch 28/50 | Average MSE: 0.062472
+Epoch 29/50 | Average MSE: 0.062062
+Epoch 30/50 | Average MSE: 0.061859
+Epoch 31/50 | Average MSE: 0.062163
+Epoch 32/50 | Average MSE: 0.061737
+Epoch 33/50 | Average MSE: 0.062099
+Epoch 34/50 | Average MSE: 0.061292
+Epoch 35/50 | Average MSE: 0.061396
+Epoch 36/50 | Average MSE: 0.061078
+Epoch 37/50 | Average MSE: 0.061240
+Epoch 38/50 | Average MSE: 0.061148
+Epoch 39/50 | Average MSE: 0.061082
+Epoch 40/50 | Average MSE: 0.060943
+Epoch 41/50 | Average MSE: 0.060841
+Epoch 42/50 | Average MSE: 0.060713
+Epoch 43/50 | Average MSE: 0.060668
+Epoch 44/50 | Average MSE: 0.060306
+Epoch 45/50 | Average MSE: 0.060686
+Epoch 46/50 | Average MSE: 0.060743
+Epoch 47/50 | Average MSE: 0.060559
+Epoch 48/50 | Average MSE: 0.060115
+Epoch 49/50 | Average MSE: 0.060389
+Epoch 50/50 | Average MSE: 0.060215
+
+TRAINING SUMMARY
+-------------------------------------------------------
+Epochs recorded: 50
+Initial MSE: 0.177486
+Final MSE: 0.060215
+Reduction: 66.07%
+
+SAMPLING RESULTS
+-------------------------------------------------------
+DDPM output shape: (10, 1, 28, 28)
+DDIM 50 output shape: (10, 1, 28, 28)
+DDIM 20 output shape: (10, 1, 28, 28)
+
+BENCHMARK RESULTS (5 RUNS EACH)
+-------------------------------------------------------
+DDPM 100: 0.1836 +/- 0.0160 s
+DDIM 50: 0.1437 +/- 0.0639 s
+DDIM 20: 0.0413 +/- 0.0001 s
+
+EXECUTION SUMMARY
+-------------------------------------------------------
+Forward diffusion output: available
+Training loss history: available
+DDPM generated images: available
+DDIM generated images: available
+Sampling benchmark: completed
+
+NOTE:
+This log was reconstructed from notebook variables.
+It is not a timestamped record of the original
+training session. Per-epoch durations were not saved.
