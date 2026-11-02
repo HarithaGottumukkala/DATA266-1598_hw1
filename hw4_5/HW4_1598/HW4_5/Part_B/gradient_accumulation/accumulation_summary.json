@@ -1,0 +1,14 @@
+{
+  "technique": "Gradient accumulation",
+  "physical_batch_size": 16,
+  "accumulation_steps": 4,
+  "effective_batch_size": 64,
+  "samples_processed": 3500,
+  "optimizer_steps": 55,
+  "epoch_time_seconds": 30.927720082999258,
+  "throughput_samples_per_second": 113.16708734453157,
+  "average_time_per_optimizer_step_seconds": 0.5623221833272593,
+  "peak_allocated_gb": 7.001997947692871,
+  "peak_reserved_gb": 7.462890625,
+  "epoch_loss": 0.9616971895354135
+}

@@ -1,0 +1,9 @@
+{
+  "seed": 1598,
+  "model_name": "google-bert/bert-base-uncased",
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "training_rows": 3500,
+  "gpu": "NVIDIA L4"
+}

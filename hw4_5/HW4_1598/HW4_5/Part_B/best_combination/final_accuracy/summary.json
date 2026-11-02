@@ -1,0 +1,10 @@
+{
+  "technique": "AMP + checkpointing + 8-bit AdamW",
+  "training_batch_size": 16,
+  "maximum_scaling_batch": 1024,
+  "best_epoch": 4,
+  "best_validation_accuracy": 0.6693333333333333,
+  "test_accuracy": 0.6866666666666666,
+  "training_time_seconds": 99.60396861299887,
+  "peak_training_memory_gib": 1.5433826446533203
+}

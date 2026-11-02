@@ -1,0 +1,13 @@
+{
+  "technique": "Gradient checkpointing FP32",
+  "maximum_successful_scaling_batch": 1024,
+  "accuracy_training_batch": 16,
+  "best_epoch": 4,
+  "best_validation_accuracy": 0.6653333333333333,
+  "test_accuracy": 0.6853333333333333,
+  "training_wall_clock_seconds": 194.56211800899973,
+  "peak_training_memory_gib": 4.131942272186279,
+  "original_test_accuracy_fp16_eval": 0.6853333333333333,
+  "test_loss_fp32": 0.8811024206479391,
+  "evaluation_precision": "FP32"
+}

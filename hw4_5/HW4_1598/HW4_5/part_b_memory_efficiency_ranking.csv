@@ -1,0 +1,2 @@
+Technique,Batch,Throughput,Peak memory GiB,Memory saved GiB,Memory saved %,Throughput loss %,GiB saved per 1% speed loss
+Checkpointing,256,90.0985573136348,6.483622074127197,14.16927719116211,68.60672203527366,27.86809324493732,0.5084408562374888

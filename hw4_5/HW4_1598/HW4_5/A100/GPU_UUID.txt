@@ -1,0 +1,2 @@
+timestamp, uuid, name, memory.total [MiB], driver_version
+2026/10/30 19:57:43.369, GPU-0f963b1b-853e-52db-1865-1f006369fd39, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.82.07

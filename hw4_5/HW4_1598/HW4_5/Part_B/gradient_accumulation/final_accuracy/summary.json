@@ -1,0 +1,11 @@
+{
+  "technique": "Gradient Accumulation FP32",
+  "physical_batch_size": 16,
+  "accumulation_steps": 4,
+  "effective_batch_size": 64,
+  "best_epoch": 4,
+  "best_validation_accuracy": 0.6613333333333333,
+  "test_accuracy": 0.6746666666666666,
+  "training_wall_clock_seconds": 136.23837945099967,
+  "peak_training_memory_gib": 9.878567218780518
+}

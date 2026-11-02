@@ -1,0 +1,2 @@
+technique,physical_batch_size,accumulation_steps,effective_batch_size,samples_processed,optimizer_steps,epoch_time_seconds,throughput_samples_per_second,average_time_per_optimizer_step_seconds,peak_allocated_gb,peak_reserved_gb,epoch_loss
+Gradient accumulation,16,4,64,3500,55,30.927720082999258,113.16708734453157,0.5623221833272593,7.001997947692871,7.462890625,0.9616971895354135

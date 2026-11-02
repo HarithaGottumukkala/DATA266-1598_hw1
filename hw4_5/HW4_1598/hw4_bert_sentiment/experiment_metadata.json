@@ -1,0 +1,34 @@
+{
+  "sid4": 1598,
+  "seed": 1598,
+  "slice": 598,
+  "source_first_row": 598,
+  "source_last_row": 5597,
+  "number_of_rows": 5000,
+  "train_size": 3500,
+  "validation_size": 750,
+  "test_size": 750,
+  "baseline_settings": {
+    "model": "google-bert/bert-base-uncased",
+    "max_length": 128,
+    "batch_size": 16,
+    "epochs": 4,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "precision": "FP32",
+    "seed": 1598
+  },
+  "best_validation_epoch": 2,
+  "best_validation_loss": 0.7518162692387899,
+  "test_loss_final_epoch": 0.9030562063852946,
+  "test_accuracy_final_epoch": 0.6946666666666667,
+  "peak_allocated_gpu_memory_gb": 2.4777894020080566,
+  "peak_reserved_gpu_memory_gb": 2.86328125,
+  "total_wall_clock_seconds": 79.48814798500007,
+  "label_mapping": {
+    "0": "negative",
+    "1": "neutral",
+    "2": "positive"
+  }
+}

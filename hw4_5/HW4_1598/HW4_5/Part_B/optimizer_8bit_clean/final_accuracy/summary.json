@@ -1,0 +1,10 @@
+{
+  "technique": "8-bit AdamW, FP32 training",
+  "training_batch_size": 16,
+  "max_successful_scaling_batch": 256,
+  "best_epoch": 2,
+  "best_validation_accuracy": 0.6773333333333333,
+  "test_accuracy": 0.6866666666666666,
+  "training_time_seconds": 146.0308886869998,
+  "peak_training_memory_gib": 1.8800225257873535
+}

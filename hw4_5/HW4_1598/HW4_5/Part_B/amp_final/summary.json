@@ -1,0 +1,11 @@
+{
+  "technique": "FP16 AMP",
+  "physical_batch_size_for_accuracy": 16,
+  "maximum_successful_scaling_batch": 256,
+  "best_validation_epoch": 3,
+  "best_validation_accuracy": 0.6813333333333333,
+  "test_accuracy": 0.6826666666666666,
+  "test_loss": 0.7833177797794342,
+  "training_wall_clock_seconds": 84.10568467899975,
+  "training_peak_allocated_gib": 2.2514781951904297
+}

@@ -1,0 +1,6 @@
+tweet,predicted_sentiment,confidence,negative_probability,neutral_probability,positive_probability
+I finally got the internship and I am so excited!,positive,0.9723717,0.020045998,0.007582301,0.9723717
+The delivery is late again and I am really disappointed.,negative,0.9422426,0.9422426,0.032800183,0.024957154
+The meeting is scheduled for tomorrow at ten.,neutral,0.9634467,0.01107105,0.9634467,0.025482252
+"Great, another two-hour delay. Exactly what I needed.",positive,0.749782,0.09528078,0.15493715,0.749782
+"I thought the movie would be boring, but I absolutely loved it.",positive,0.95764583,0.030800523,0.0115535725,0.95764583

@@ -1,0 +1,97 @@
+HW4.a RUN LOG
+Recorded: 2026-10-30T19:23:55.451017+00:00
+SID4: 1598
+SEED: 1598
+SLICE: 598
+
+=== INITIAL ENVIRONMENT ===
+Python: 3.13.16
+PyTorch: 2.11.0+cu130
+Transformers: 5.20.2
+Datasets: 4.8.5
+Accelerate: 1.15.0
+Scikit-learn: 1.6.1
+GPU: NVIDIA A100-SXM4-40GB
+GPU memory: 39.49 GB
+
+=== DATASET LOAD ERROR ===
+ValueError: BuilderConfig 'sentiment' not found.
+Available: ['default']
+
+Resolution:
+Loaded the fixed TweetEval sentiment training Parquet file directly.
+
+=== DATASET OUTPUT ===
+Original training rows: 45,615
+Selected source rows: 598 through 5,597
+Selected rows: 5,000
+Class counts:
+neutral=2,292
+positive=1,932
+negative=776
+
+Split sizes:
+training=3,500
+validation=750
+test=750
+
+=== TENSOR OUTPUT ===
+Maximum sequence length: 128
+Physical batch size: 16
+Training batches: 219
+Validation batches: 47
+Test batches: 47
+Input batch shape: [16, 128]
+Label batch shape: [16]
+
+=== TRAINING OUTPUT ===
+Epoch 1: train_loss=0.9124 validation_loss=0.7528 validation_accuracy=0.6587 train_time=19.72s
+Epoch 2: train_loss=0.6196 validation_loss=0.7518 validation_accuracy=0.6907 train_time=18.27s
+Epoch 3: train_loss=0.3898 validation_loss=0.8437 validation_accuracy=0.6800 train_time=18.24s
+Epoch 4: train_loss=0.2325 validation_loss=0.9424 validation_accuracy=0.6747 train_time=18.30s
+
+Best validation epoch: 2
+Extra wall-clock time after best epoch: 39.00 seconds
+Total wall-clock time: 79.49 seconds
+Peak allocated GPU memory: 2.478 GB
+Peak reserved GPU memory: 2.863 GB
+
+=== TEST OUTPUT ===
+Test loss: 0.9031
+Test accuracy: 0.6947
+Negative precision/recall: 0.6230 / 0.6496
+Neutral precision/recall: 0.6870 / 0.7209
+Positive precision/recall: 0.7378 / 0.6817
+Worst class: negative
+
+Confusion matrix:
+[[76, 31, 10],
+ [36, 248, 60],
+ [10, 82, 197]]
+
+=== MODEL SAVE AND RELOAD ===
+Saved directory: hw4_bert_sentiment
+Checkpoint file: model.safetensors
+Checkpoint size: 417.67 MB
+Reloaded labels: negative, neutral, positive
+Reload verification: passed
+
+=== VLLM ENVIRONMENT ===
+Python: 3.13.16
+PyTorch: 2.13.0+cu130
+Transformers: 5.19.0
+vLLM: 0.32.0
+GPU: NVIDIA A100-SXM4-40GB
+
+=== SERVING OUTPUT ===
+HF pipeline batch 1: 30.31 tok/s, p50=1330.43 ms, p95=1690.91 ms
+vLLM batch 1: 227.67 tok/s, p50=162.47 ms, p95=231.36 ms
+vLLM batch 8: 1353.25 tok/s, p50=205.82 ms, p95=280.97 ms
+vLLM batch 32: 3886.88 tok/s, p50=310.88 ms, p95=313.20 ms
+
+=== WARNINGS ===
+The Hugging Face pipeline reported that both max_length and
+max_new_tokens were set. It explicitly used max_new_tokens=64.
+
+The vLLM installation reported dependency conflicts with optional
+Colab packages. vLLM imported and ran successfully after restart.

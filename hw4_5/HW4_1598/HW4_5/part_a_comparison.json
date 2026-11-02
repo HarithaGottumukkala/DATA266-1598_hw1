@@ -1,0 +1,6 @@
+{
+  "A100_max_batch": 256,
+  "L4_max_batch": 256,
+  "max_batch_ratio": 1.0,
+  "VRAM_capacity_ratio": 1.7925556059918293
+}

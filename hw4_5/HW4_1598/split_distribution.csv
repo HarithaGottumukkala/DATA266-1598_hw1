@@ -1,0 +1,10 @@
+split,sentiment,count,percentage
+Training,negative,543,15.51
+Training,neutral,1604,45.83
+Training,positive,1353,38.66
+Validation,negative,116,15.47
+Validation,neutral,344,45.87
+Validation,positive,290,38.67
+Test,negative,117,15.6
+Test,neutral,344,45.87
+Test,positive,289,38.53
