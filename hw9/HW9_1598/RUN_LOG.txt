@@ -1,0 +1,116 @@
+Homework 9 Run Log
+==================
+
+Log generated: 2026-10-28T03:11:30.013902+00:00
+Notebook: DATA266_HW9_1598.ipynb
+SID4: 1598
+Seed: 1598
+
+Environment
+-----------
+Platform: Google Colab
+GPU: Tesla T4
+PyTorch: 2.11.0+cu130
+Device: cuda
+
+Execution method
+----------------
+Google Colab menu: Runtime > Run all
+Runtime type: T4 GPU
+
+Training configuration
+----------------------
+Epochs: 50
+Learning rate: 2e-05
+Batch size: 256
+Diffusion steps: 1000
+Label-drop probability: 0.1
+Target: Gaussian noise
+Loss: Mean squared error
+Optimizer: Adam
+Mixed precision: enabled
+
+Epoch results
+-------------
+Epoch 01/50 | train_mse=0.57163303 | validation_mse=0.32552291
+Epoch 02/50 | train_mse=0.27171973 | validation_mse=0.22397135
+Epoch 03/50 | train_mse=0.20971074 | validation_mse=0.18679683
+Epoch 04/50 | train_mse=0.18357097 | validation_mse=0.16900162
+Epoch 05/50 | train_mse=0.16927544 | validation_mse=0.15797712
+Epoch 06/50 | train_mse=0.16036741 | validation_mse=0.15071450
+Epoch 07/50 | train_mse=0.15307324 | validation_mse=0.14594500
+Epoch 08/50 | train_mse=0.14872884 | validation_mse=0.14172544
+Epoch 09/50 | train_mse=0.14574841 | validation_mse=0.13846482
+Epoch 10/50 | train_mse=0.14310074 | validation_mse=0.13580373
+Epoch 11/50 | train_mse=0.13842264 | validation_mse=0.13386370
+Epoch 12/50 | train_mse=0.13654517 | validation_mse=0.13176141
+Epoch 13/50 | train_mse=0.13563751 | validation_mse=0.12986557
+Epoch 14/50 | train_mse=0.13564658 | validation_mse=0.12847941
+Epoch 15/50 | train_mse=0.13393826 | validation_mse=0.12728576
+Epoch 16/50 | train_mse=0.13232079 | validation_mse=0.12619026
+Epoch 17/50 | train_mse=0.13074051 | validation_mse=0.12525138
+Epoch 18/50 | train_mse=0.12848813 | validation_mse=0.12396509
+Epoch 19/50 | train_mse=0.12748035 | validation_mse=0.12317313
+Epoch 20/50 | train_mse=0.12689094 | validation_mse=0.12236384
+Epoch 21/50 | train_mse=0.12606842 | validation_mse=0.12189498
+Epoch 22/50 | train_mse=0.12643232 | validation_mse=0.12117314
+Epoch 23/50 | train_mse=0.12439947 | validation_mse=0.12057489
+Epoch 24/50 | train_mse=0.12494306 | validation_mse=0.12001082
+Epoch 25/50 | train_mse=0.12440781 | validation_mse=0.11952546
+Epoch 26/50 | train_mse=0.12442727 | validation_mse=0.11877393
+Epoch 27/50 | train_mse=0.12259151 | validation_mse=0.11834053
+Epoch 28/50 | train_mse=0.12220156 | validation_mse=0.11797335
+Epoch 29/50 | train_mse=0.12375258 | validation_mse=0.11741530
+Epoch 30/50 | train_mse=0.12152570 | validation_mse=0.11696666
+Epoch 31/50 | train_mse=0.12116694 | validation_mse=0.11676184
+Epoch 32/50 | train_mse=0.12203309 | validation_mse=0.11623336
+Epoch 33/50 | train_mse=0.12116949 | validation_mse=0.11600124
+Epoch 34/50 | train_mse=0.12085433 | validation_mse=0.11555062
+Epoch 35/50 | train_mse=0.12052747 | validation_mse=0.11532798
+Epoch 36/50 | train_mse=0.12215572 | validation_mse=0.11503445
+Epoch 37/50 | train_mse=0.11904116 | validation_mse=0.11477447
+Epoch 38/50 | train_mse=0.11809222 | validation_mse=0.11460503
+Epoch 39/50 | train_mse=0.11931926 | validation_mse=0.11442432
+Epoch 40/50 | train_mse=0.11776510 | validation_mse=0.11399839
+Epoch 41/50 | train_mse=0.11886048 | validation_mse=0.11368490
+Epoch 42/50 | train_mse=0.11607838 | validation_mse=0.11342867
+Epoch 43/50 | train_mse=0.11941566 | validation_mse=0.11336578
+Epoch 44/50 | train_mse=0.11774222 | validation_mse=0.11301131
+Epoch 45/50 | train_mse=0.11870045 | validation_mse=0.11281085
+Epoch 46/50 | train_mse=0.11751306 | validation_mse=0.11261141
+Epoch 47/50 | train_mse=0.11753807 | validation_mse=0.11255893
+Epoch 48/50 | train_mse=0.11719166 | validation_mse=0.11226941
+Epoch 49/50 | train_mse=0.11568783 | validation_mse=0.11181881
+Epoch 50/50 | train_mse=0.11632118 | validation_mse=0.11176687
+
+Final results
+-------------
+Initial training MSE: 0.57163303
+Final training MSE: 0.11632118
+Initial validation MSE: 0.32552291
+Final validation MSE: 0.11176687
+Best validation MSE: 0.11176687
+Best validation epoch: 50
+Training-cell time: 7.43 minutes
+
+Sampling
+--------
+Generated images: 64
+Guidance weight: 3.0
+Sampling seed: 1598
+Reverse steps: 1000
+Final latent shape: (64, 4, 8, 8)
+Decoded image shape: (64, 3, 64, 64)
+
+Errors
+------
+No runtime errors occurred during the completed 50-epoch training and
+1,000-step sampling runs.
+
+Artifacts
+---------
+/content/drive/MyDrive/DATA266/HW9_1598/hw9_sid1598_final.pt
+/content/drive/MyDrive/DATA266/HW9_1598/conditional_sample_grid_64_cfg_w3.png
+/content/drive/MyDrive/DATA266/HW9_1598/reverse_diffusion_progress_cfg_w3.png
+/content/drive/MyDrive/DATA266/HW9_1598/generated_latents_cfg_w3_sid1598.pt
+/content/drive/MyDrive/DATA266/HW9_1598/training_validation_loss.png
