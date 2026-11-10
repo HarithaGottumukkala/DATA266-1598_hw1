@@ -1,0 +1,3 @@
+Memory Condition,Precision@5,Pooled Recall@5,Reciprocal Rank,Relevant in Top 5,Relevant in Pooled Set
+Without Memory,0.4,0.4,0.5,2,5
+With Memory,0.8,0.8,1.0,4,5

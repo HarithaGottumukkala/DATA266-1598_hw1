@@ -1,0 +1,5 @@
+Strategy,Approach,Precision@5,Pooled Recall@5,MRR
+Fixed-Size,With Reranking,0.7,0.4107142857142857,1.0
+Fixed-Size,Without Reranking,0.6,0.3392857142857143,0.75
+Recursive,With Reranking,0.7,0.38636363636363635,1.0
+Recursive,Without Reranking,0.7,0.3693181818181818,1.0

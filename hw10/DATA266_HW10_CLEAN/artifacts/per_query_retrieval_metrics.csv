@@ -1,0 +1,9 @@
+Strategy,Query,Approach,Precision@5,Pooled Recall@5,Reciprocal Rank,Relevant in Top 5,Relevant in Candidate Pool
+Fixed-Size,Q1,Without Reranking,0.6,0.42857142857142855,1.0,3,7
+Fixed-Size,Q1,With Reranking,0.8,0.5714285714285714,1.0,4,7
+Fixed-Size,Q2,Without Reranking,0.6,0.25,0.5,3,12
+Fixed-Size,Q2,With Reranking,0.6,0.25,1.0,3,12
+Recursive,Q1,Without Reranking,0.6,0.375,1.0,3,8
+Recursive,Q1,With Reranking,0.8,0.5,1.0,4,8
+Recursive,Q2,Without Reranking,0.8,0.36363636363636365,1.0,4,11
+Recursive,Q2,With Reranking,0.6,0.2727272727272727,1.0,3,11

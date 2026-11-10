@@ -1,0 +1,6 @@
+Failure,Evidence,Possible Improvement
+Reranking regression,Recursive Q2 Precision@5 decreased from 0.80 to 0.60,"Tune candidate depth, combine retrieval and reranker scores, or test another reranker"
+Ambiguous follow-up without memory,Precision@5 and pooled Recall@5 were 0.40,Use coreference-aware or LLM-based query rewriting
+Very short recursive chunks,36 recursive chunks were under 200 characters; minimum length was 9,Merge short fragments with adjacent chunks
+Limited evaluation coverage,Two primary evaluation queries came from one research article,Evaluate more queries from diverse documents
+Candidate-pool limitation,Reranker only saw the top 20 embedding results,Use hybrid retrieval and a larger candidate pool

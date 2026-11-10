@@ -1,0 +1,3 @@
+Strategy,Precision@5,Pooled Recall@5,MRR
+Fixed-Size,0.65,0.375,0.875
+Recursive,0.7,0.37784090909090906,1.0
