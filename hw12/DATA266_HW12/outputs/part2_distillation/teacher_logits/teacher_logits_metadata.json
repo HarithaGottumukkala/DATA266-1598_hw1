@@ -1,0 +1,16 @@
+{
+  "teacher": "BERT AG News",
+  "dataset": "AG News",
+  "split": "stratified_training_split_seed_42",
+  "num_samples": 108000,
+  "num_classes": 4,
+  "max_length": 256,
+  "batch_size": 64,
+  "logits_shape": [
+    108000,
+    4
+  ],
+  "dtype": "float32",
+  "data_order": "tokenized_train_original_order",
+  "temperature_applied": false
+}

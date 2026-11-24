@@ -1,0 +1,98 @@
+{
+  "_provenance": "Final test results printed in notebooks/DATA266_HW12_Part2_3_Distillation_SEED1598_executed.ipynb cells 38 and 40 (GPU: Tesla T4). The CSV files written by those cells (paired predictions, per-class CSV, failure CSVs) were saved only to Google Drive and are not available locally.",
+  "test_examples": 7600,
+  "teacher": {
+    "accuracy": 0.944605,
+    "macro_f1": 0.944652
+  },
+  "student_T5_alpha025": {
+    "accuracy": 0.946579,
+    "macro_f1": 0.946626
+  },
+  "per_class_accuracy_pct": {
+    "World": {
+      "teacher": 94.9474,
+      "student": 95.4211
+    },
+    "Sports": {
+      "teacher": 98.8421,
+      "student": 98.8947
+    },
+    "Business": {
+      "teacher": 91.3684,
+      "student": 91.2105
+    },
+    "Sci/Tech": {
+      "teacher": 92.6842,
+      "student": 93.1053
+    }
+  },
+  "teacher_correct_student_wrong_count": 92,
+  "five_failure_examples": [
+    {
+      "test_index": 110,
+      "true": "Business",
+      "student_pred": "Sci/Tech",
+      "headline": "Yahoo! Ups Ante for Small Businesses"
+    },
+    {
+      "test_index": 399,
+      "true": "Business",
+      "student_pred": "Sci/Tech",
+      "headline": "Nortel Downsizes Again"
+    },
+    {
+      "test_index": 408,
+      "true": "Business",
+      "student_pred": "World",
+      "headline": "Chavez rejects CD as opposition"
+    },
+    {
+      "test_index": 467,
+      "true": "Business",
+      "student_pred": "Sci/Tech",
+      "headline": "Deal has S2io champing at the gigabit"
+    },
+    {
+      "test_index": 1124,
+      "true": "Business",
+      "student_pred": "Sci/Tech",
+      "headline": "Judge: Geico can sue Google, Overture over ads"
+    }
+  ],
+  "teacher_confusion_matrix": {
+    "source": "notebooks/supporting/DATA266_HW12_Distillation_working_notebook_executed.ipynb cell 23 (teacher is deterministic; counts reproduce the seed-1598 teacher accuracy and per-class values exactly)",
+    "labels": [
+      "World",
+      "Sports",
+      "Business",
+      "Sci/Tech"
+    ],
+    "matrix": [
+      [
+        1804,
+        10,
+        50,
+        36
+      ],
+      [
+        9,
+        1878,
+        6,
+        7
+      ],
+      [
+        33,
+        6,
+        1736,
+        125
+      ],
+      [
+        28,
+        9,
+        102,
+        1761
+      ]
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+# Part 1 (GPTQ) environment, Google Colab, NVIDIA L4 (22 GiB)
+# Versions as printed in notebooks/DATA266_HW12_Part1_GPTQ_executed.ipynb.
+# The quantization, GPTQ evaluation and benchmarks ran in the FINAL environment below.
+# Python 3.13.16
+#
+# --- Final environment (after `pip install gptqmodel==7.12.0 --no-build-isolation`, then `pip uninstall -y torchaudio`) ---
+torch==2.15.0          # recorded as 2.15.0+cu132 (CUDA 13.2)
+transformers==5.23.0
+datasets==5.2.0
+gptqmodel==7.12.0
+torchao==0.18.0
+triton==3.9.0
+safetensors==0.8.0     # "already satisfied (0.8.0)" in the install log
+#
+# --- Initial Colab environment (first FP16 perplexity run only) ---
+# torch==2.14.1+cu130, transformers==5.22.1, datasets==4.8.5, accelerate==1.15.0
+# accelerate version in the final environment: not recorded

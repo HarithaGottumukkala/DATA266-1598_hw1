@@ -1,0 +1,95 @@
+{
+  "teacher_soft_targets": {
+    "1": {
+      "mean_entropy_nats": 0.019297019475285265,
+      "mean_entropy_over_log4": 0.0139198571504659,
+      "mean_max_prob": 0.9951449804716327,
+      "mean_second_prob": 0.00442569732466142,
+      "mean_nontarget_mass": 0.00485501952836731
+    },
+    "2": {
+      "mean_entropy_nats": 0.22822795840265442,
+      "mean_entropy_over_log4": 0.16463167188986108,
+      "mean_max_prob": 0.9494319961952171,
+      "mean_second_prob": 0.03129633635717551,
+      "mean_nontarget_mass": 0.05056800380478288
+    },
+    "5": {
+      "mean_entropy_nats": 1.006531310222166,
+      "mean_entropy_over_log4": 0.7260588648784949,
+      "mean_max_prob": 0.6539786679517616,
+      "mean_second_prob": 0.1496582294025928,
+      "mean_nontarget_mass": 0.3460213320482384
+    },
+    "10": {
+      "mean_entropy_nats": 1.2899471681331391,
+      "mean_entropy_over_log4": 0.9305001912372209,
+      "mean_max_prob": 0.4456728593799306,
+      "mean_second_prob": 0.21117133055601905,
+      "mean_nontarget_mass": 0.5543271406200694
+    }
+  },
+  "teacher_pred_class_counts_120k": [
+    29868,
+    30007,
+    29939,
+    30186
+  ],
+  "teacher_logit_margin_median": 7.6868786215782166,
+  "teacher_per_class": {
+    "World": {
+      "precision": 0.9626467449306296,
+      "recall": 0.9494736842105264,
+      "f1": 0.9560148383677796
+    },
+    "Sports": {
+      "precision": 0.9868628481345244,
+      "recall": 0.988421052631579,
+      "f1": 0.9876413357875361
+    },
+    "Business": {
+      "precision": 0.9165786694825766,
+      "recall": 0.9136842105263158,
+      "f1": 0.9151291512915131
+    },
+    "Sci/Tech": {
+      "precision": 0.9129082426127527,
+      "recall": 0.9268421052631579,
+      "f1": 0.9198224079394097
+    }
+  },
+  "teacher_macro_f1_from_cm": 0.9446519333465596,
+  "paired": {
+    "student_correct": 7194,
+    "both_correct": 7087,
+    "teacher_only": 92,
+    "student_only": 107,
+    "both_wrong": 314,
+    "mcnemar_exact_p": 0.32099040312889326,
+    "mcnemar_chi2_cc": 0.9849246231155779
+  },
+  "val_acc_95ci_halfwidth_pp": 0.3972567532465622,
+  "student_per_class_correct": {
+    "World": 1813,
+    "Sports": 1879,
+    "Business": 1733,
+    "Sci/Tech": 1769
+  },
+  "equivalent_unscaled_alpha": {
+    "T1_a0.5": 0.5,
+    "T2_a0.5": 0.2,
+    "T5_a0.5": 0.038461538461538464,
+    "T10_a0.5": 0.009900990099009901,
+    "T5_a0.25": 0.013157894736842105,
+    "T5_a0.75": 0.10714285714285714
+  },
+  "gptq_size_model": {
+    "quantized_linear_params": 84934656,
+    "embedding_params": 40183296,
+    "other_params": 121344,
+    "quantized_fraction": 0.6781789638932496,
+    "approx_bits_per_weight": 4.15625,
+    "estimated_MiB": 118.95703125,
+    "fp16_all_MiB": 238.875
+  }
+}

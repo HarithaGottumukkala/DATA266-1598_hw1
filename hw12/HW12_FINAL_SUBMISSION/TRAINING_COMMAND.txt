@@ -1,0 +1,54 @@
+DATA 266 - Homework 12 - How each experiment was executed
+=========================================================
+All experiments ran as Google Colab notebook cells (no stand-alone CLI scripts).
+Seed for every stochastic step: 1598 (SEED = SID4).
+Drive workspace: /content/drive/MyDrive/DATA266_HW12
+
+PART 1 - GPTQ  (notebooks/DATA266_HW12_Part1_GPTQ_executed.ipynb, NVIDIA L4)
+--------------------------------------------------------------------------
+cell 4    personal parameters and seeds (SID4=1598)
+cell 5,7  load facebook/opt-125m, revision 27dcfa74d334bc871f3234de431e71c6eeba5dd6, torch.float16
+cell 9    WikiText-2 (Salesforce/wikitext, wikitext-2-raw-v1): sample 128 non-empty train texts, seed 1598, <=256 tokens
+cell 11   FP16 perplexity on the full test split: window 1024, stride 512
+cell 15   python -m pip install gptqmodel==7.12.0 --no-build-isolation      (then restart the runtime)
+cell 18   python -m pip uninstall -y torchaudio      (fixes the TorchAudio/PyTorch CUDA 13.0 vs 13.2 mismatch)
+cell 21   GPTQModel quantization:
+            QuantizeConfig(bits=4, group_size=128, desc_act=False)   # lm_head not quantized
+            calibration = the 128 saved texts, batch size 1
+            save -> outputs/part1_gptq/opt125m_gptq_4bit
+cell 23   reload the checkpoint and run a deterministic generation check
+cell 25   GPTQ perplexity (same tokens, window and stride as cell 11)
+cell 27   benchmark each model separately: batch 1, 128 random token IDs (torch.Generator seeded 1598),
+          15 warm-up + 80 timed forward passes, torch.cuda.synchronize() around each call,
+          peak = torch.cuda.max_memory_allocated(); FP16 re-saved in FP16 for the size comparison
+cell 31   FP16 perplexity re-run in the final software environment
+
+PARTS 2-3 - KNOWLEDGE DISTILLATION
+(notebooks/DATA266_HW12_Part2_3_Distillation_SEED1598_executed.ipynb; training on NVIDIA L4, evaluation on Tesla T4)
+-----------------------------------------------------------------------------------------------------------------
+cell 11   sklearn train_test_split(test_size=0.10, stratify=labels, random_state=1598) -> 108,000 / 12,000
+cell 13-15  verify tokenizers (max_length 256); cache frozen-teacher logits -> teacher_train_logits.npy (108000x4)
+cell 17-20  distillation loss, data loaders, smoke test
+            loss = alpha*CE(student, y) + (1-alpha) * T^2 * KL(softmax(t/T) || softmax(s/T))   [alpha = CE weight]
+cell 22   baseline run   T=2,  alpha=0.50
+cell 25   reusable training function (fresh DistilBERT per run, seed 1598)
+cell 26   T=1,  alpha=0.50
+cell 27   T=5,  alpha=0.50
+cell 28   T=10, alpha=0.50
+cell 29   temperature selection on validation accuracy (tie-break: macro-F1) -> T=5
+cell 32   T=5,  alpha=0.25
+cell 33   T=5,  alpha=0.75
+cell 34   alpha selection on validation -> alpha=0.25 (checkpoint_epoch_3)
+cell 38   single evaluation of teacher and selected student on the 7,600-article test set
+cell 40   per-class accuracy and teacher-correct / student-wrong examples
+cell 43   benchmark: batch 1, padded to 256 tokens, same 100 test texts, 20 warm-up + 100 timed passes
+cell 46   teacher logits for the remaining 12,000 rows -> teacher_all_120000_logits.npy (not used for training)
+
+Shared training hyperparameters (results/knowledge_distillation/training_config_seed1598.json):
+  model distilbert/distilbert-base-uncased, num_labels 4, epochs 3, batch 16, AdamW lr 2e-5,
+  weight_decay 0.01, warmup_ratio 0.06 (1,215 of 20,250 steps), grad clip 1.0, max_length 256, FP32
+
+CPU-ONLY ANALYSIS FOR THE REPORT (run from the hw12 folder)
+----------------------------------------------------------
+python3 src/derive_metrics.py
+python3 src/make_figures.py

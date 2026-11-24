@@ -1,0 +1,47 @@
+{
+  "seed": 1598,
+  "experiment": "temperature_T10_alpha05",
+  "temperature": 10.0,
+  "alpha": 0.5,
+  "epochs_completed": 3,
+  "best_epoch": 3,
+  "best_checkpoint": "/content/drive/MyDrive/DATA266_HW12/outputs/part2_distillation_seed1598/temperature_T10_alpha05/checkpoint_epoch_3",
+  "best_validation_accuracy": 0.9470833333333334,
+  "best_validation_macro_f1": 0.9471456950875767,
+  "history": [
+    {
+      "epoch": 1,
+      "train_kd_loss": 0.8231324573174394,
+      "train_ce_loss": 0.35163772306342056,
+      "train_t2_kl_loss": 1.2946271920722945,
+      "validation_ce_loss": 0.2512883918033913,
+      "validation_accuracy": 0.9398333333333333,
+      "validation_macro_f1": 0.9398823205826263,
+      "optimizer_steps_completed": 6750,
+      "completed_utc": "2026-11-20T01:17:51.229824+00:00"
+    },
+    {
+      "epoch": 2,
+      "train_kd_loss": 0.2974540702012126,
+      "train_ce_loss": 0.18959288459912338,
+      "train_t2_kl_loss": 0.40531525553818104,
+      "validation_ce_loss": 0.24887551544575642,
+      "validation_accuracy": 0.9445833333333333,
+      "validation_macro_f1": 0.9446108375462895,
+      "optimizer_steps_completed": 13500,
+      "completed_utc": "2026-11-20T01:27:02.913994+00:00"
+    },
+    {
+      "epoch": 3,
+      "train_kd_loss": 0.1882286162674427,
+      "train_ce_loss": 0.12955200867206978,
+      "train_t2_kl_loss": 0.2469052239788903,
+      "validation_ce_loss": 0.2350992654301614,
+      "validation_accuracy": 0.9470833333333334,
+      "validation_macro_f1": 0.9471456950875767,
+      "optimizer_steps_completed": 20250,
+      "completed_utc": "2026-11-20T01:36:14.398601+00:00"
+    }
+  ],
+  "completed_utc": "2026-11-20T01:36:14.994118+00:00"
+}

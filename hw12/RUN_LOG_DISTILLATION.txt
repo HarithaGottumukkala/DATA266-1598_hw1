@@ -1,0 +1,93 @@
+DATA 266 — HW12 KNOWLEDGE DISTILLATION RUN LOG
+================================================
+Scope: Part 2 and its relevant evaluation; GPTQ run log is kept separately.
+Source: preserved outputs of the supplied Colab notebook and successful
+seed-1598 recovery/evaluation steps. This is a factual reconstruction of
+executed steps, not a claim that the reorganized notebook was re-executed.
+
+SETTINGS
+--------
+SID4 / seed: 1598
+Dataset: fancyzhx/ag_news
+Original train: 120000 | stratified train: 108000 | validation: 12000
+Held-out AG News test: 7600
+Teacher: instructor-provided local BERT, teacher_model/
+Student: distilbert/distilbert-base-uncased
+Epochs: 3; batch size: 16; LR: 2e-5; weight decay: 0.01
+Warmup ratio: 0.06; max length: 256; clipping: 1.0
+Loss: alpha * CE + (1-alpha) * T^2 * KL
+Alpha denotes hard-label cross-entropy weighting.
+
+RECORDED EXECUTION ORDER
+------------------------
+01. Mounted Google Drive and configured personal seed/output directories.
+02. Verified local BERT checkpoint, dataset and labels.
+03. Created stratified seed-1598 split manifest (108000/12000).
+04. Verified teacher/student tokenization and wrote tokenization metadata.
+05. Loaded teacher, generated 108000x4 training teacher logits; saved cache.
+06. Verified KL/CE loss, data loader row alignment and student smoke test.
+07. Completed T=2, alpha=0.50 baseline training (3 epochs).
+08. Completed independent T=1,5,10, alpha=0.50 training runs (3 epochs).
+09. Compared temperatures by validation only; selected T=5.
+10. Completed alpha=0.25 and alpha=0.75 runs at T=5; reused existing
+    alpha=0.50, T=5 experiment, each covering a distinct configuration.
+11. Compared three alpha settings by validation only; selected alpha=0.25.
+12. Loaded selected checkpoint and verified (1,4) forward pass.
+13. Evaluated teacher and selected student on same 7600 test records.
+14. Saved paired predictions, per-class accuracy, five paired errors.
+15. Measured both models on the SAME Tesla T4: batch 1, padded 256 tokens,
+    warmups 20, 100 timed forward passes; tokenization excluded.
+16. Verified existing artifacts and logit cache coverage.
+17. Completed missing 12000 teacher logits after correcting a Hugging Face
+    dataset-column/list tokenizer input incompatibility; saved additional
+    full 120000x4 cache in original source-record order.
+
+RECORDED VALIDATION ACCURACIES
+------------------------------
+T=1, alpha=.50: 94.7167%
+T=2, alpha=.50: 94.7000%
+T=5, alpha=.50: 94.7750%
+T=10, alpha=.50: 94.7083%
+T=5, alpha=.25: 94.7917% (selected)
+T=5, alpha=.75: 94.6583%
+
+FINAL AG NEWS TEST (7600 examples)
+----------------------------------
+BERT teacher accuracy: 94.4605%; macro-F1: 0.944652
+DistilBERT student accuracy: 94.6579%; macro-F1: 0.946626
+Student minus teacher: +0.1974 percentage points
+Best checkpoint: outputs/part2_distillation_seed1598/
+                 alpha_T5_alpha025/checkpoint_epoch_3
+
+TESLA T4 BENCHMARK (same hardware, input examples and settings)
+---------------------------------------------------------------
+Teacher p50/p95 ms: 16.7124 / 17.1056
+Student p50/p95 ms: 8.5814 / 8.9077
+Teacher/student PyTorch peak allocated GiB: 0.4264 / 0.2680
+Teacher/student checkpoint-directory MiB: 418.5823 / 255.4317
+Notes: Inference only; CUDA synchronized; tokenization/model load omitted.
+
+FINAL LOGIT-COVERAGE CHECK
+--------------------------
+teacher_train_logits.npy: (108000,4), kept unchanged
+teacher_all_120000_logits.npy: (120000,4), created separately
+12000 validation logits generated with same local teacher and max length.
+No held-out validation examples were used to retrain the selected student.
+Teacher inference executed on Tesla T4 for the completion step.
+
+REPRODUCIBILITY / SAFETY
+------------------------
+All six distinct training runs are complete and checkpoints survive in
+Google Drive. Original training cells guard against overwriting filled
+experiment directories. Do NOT Run All against populated existing folders.
+To reproduce training from scratch, use a fresh empty experiment workspace.
+Do not mistake retained execution outputs for a fresh reproduction test.
+Old seed-42 analyses are excluded from the cleaned submission notebook.
+Original uploaded notebook is unchanged.
+
+DOCUMENTATION STATUS
+--------------------
+The source notebook includes original epoch outputs and saved training
+history; the cleaned version preserves original cell output evidence.
+GPTQ files (METRICS_GPTQ.md and RUN_LOG_GPTQ_DRAFT.txt) are intentionally
+not modified or consolidated into this distinct distillation run log.

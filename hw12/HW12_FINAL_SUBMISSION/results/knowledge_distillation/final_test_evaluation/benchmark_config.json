@@ -1,0 +1,35 @@
+{
+  "seed": 1598,
+  "student_temperature": 5,
+  "student_alpha": 0.25,
+  "benchmark_method": "synchronized wall-clock forward pass",
+  "tokenization_timed": false,
+  "memory_metric": "torch CUDA peak allocated memory",
+  "disk_metric": "checkpoint directory size",
+  "results": [
+    {
+      "model": "BERT Teacher",
+      "gpu": "Tesla T4",
+      "batch_size": 1,
+      "sequence_length": 256,
+      "warmup_runs": 20,
+      "timed_runs": 100,
+      "p50_latency_ms": 16.712395500007915,
+      "p95_latency_ms": 17.10558859986122,
+      "peak_gpu_memory_gb": 0.4264082908630371,
+      "checkpoint_size_mb": 418.5822582244873
+    },
+    {
+      "model": "DistilBERT Student",
+      "gpu": "Tesla T4",
+      "batch_size": 1,
+      "sequence_length": 256,
+      "warmup_runs": 20,
+      "timed_runs": 100,
+      "p50_latency_ms": 8.581375499943533,
+      "p95_latency_ms": 8.907704200169064,
+      "peak_gpu_memory_gb": 0.267972469329834,
+      "checkpoint_size_mb": 255.43170356750488
+    }
+  ]
+}

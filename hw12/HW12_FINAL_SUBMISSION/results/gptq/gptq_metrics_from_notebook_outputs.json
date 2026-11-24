@@ -1,0 +1,77 @@
+{
+  "_provenance": "Values transcribed from printed cell outputs of notebooks/DATA266_HW12_Part1_GPTQ_executed.ipynb (cells 11, 21, 25, 27, 31) and results/gptq/gptq_colab_log_extract.txt. The original JSON files remain on Google Drive (outputs/part1_gptq/).",
+  "model": {
+    "id": "facebook/opt-125m",
+    "revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+    "parameters": 125239296,
+    "instructor_approval": "Not confirmed in project records"
+  },
+  "quantization": {
+    "method": "GPTQ",
+    "library": "GPTQModel 7.12.0",
+    "bits": 4,
+    "group_size": 128,
+    "desc_act": false,
+    "lm_head_quantized": false,
+    "calibration_dataset": "Salesforce/wikitext wikitext-2-raw-v1 train",
+    "calibration_samples": 128,
+    "calibration_max_tokens": 256,
+    "calibration_total_tokens": 18595,
+    "calibration_batch_size": 1,
+    "elapsed_seconds": 44.440507021000485,
+    "layers": 12,
+    "quantized_modules": 72,
+    "estimated_bpw": 4.2875,
+    "peak_quantization_vram_gib": 0.38,
+    "kernel_selected": "MarlinLinear",
+    "gptqmodel_reported_size_mb": {
+      "pre_quantized_fp32": 478.03,
+      "quantized": 119.27,
+      "reduction_pct": 75.05
+    }
+  },
+  "quality": {
+    "dataset": "wikitext-2-raw-v1 test",
+    "window": 1024,
+    "stride": 512,
+    "total_tokens": 287644,
+    "scored_tokens": 287643,
+    "windows": 562,
+    "fp16_pre_upgrade": {
+      "avg_nll": 3.262074,
+      "perplexity": 26.10361398353055,
+      "torch": "2.14.1+cu130"
+    },
+    "fp16_final_env": {
+      "avg_nll": 3.262022511879496,
+      "perplexity": 26.102275955304563,
+      "torch": "2.15.0+cu132"
+    },
+    "gptq_4bit": {
+      "avg_nll": 3.387792501888455,
+      "perplexity": 29.60053696540024
+    }
+  },
+  "performance": {
+    "gpu": "NVIDIA L4",
+    "batch_size": 1,
+    "sequence_length": 128,
+    "warmup_runs": 15,
+    "timed_runs": 80,
+    "input": "random token IDs (seed 1598), next-token forward pass",
+    "fp16": {
+      "p50_ms": 7.914174999768875,
+      "p95_ms": 10.295234750674354,
+      "mean_ms": 8.366162875040573,
+      "peak_gpu_gib": 0.2653694152832031,
+      "weight_size_mib": 238.8963394165039
+    },
+    "gptq_4bit": {
+      "p50_ms": 16.356358499706403,
+      "p95_ms": 18.90707710008428,
+      "mean_ms": 16.58213060010212,
+      "peak_gpu_gib": 0.1480560302734375,
+      "weight_size_mib": 119.31770324707031
+    }
+  }
+}

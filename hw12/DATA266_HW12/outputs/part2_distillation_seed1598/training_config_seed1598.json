@@ -1,0 +1,20 @@
+{
+  "seed": 1598,
+  "model_name": "distilbert/distilbert-base-uncased",
+  "num_labels": 4,
+  "epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.06,
+  "max_length": 256,
+  "gradient_clip_norm": 1.0,
+  "baseline_temperature": 2.0,
+  "baseline_alpha": 0.5,
+  "alpha_definition": "cross_entropy_weight",
+  "selection_metric": "validation_accuracy",
+  "teacher_logits_path": "/content/drive/MyDrive/DATA266_HW12/outputs/part2_distillation_seed1598/teacher_logits/teacher_train_logits.npy",
+  "training_examples": 108000,
+  "validation_examples": 12000,
+  "split_manifest_sha256": "b6cbd82e6f2e70d89cedc93b6a5cfbb36318c8d4a62b5950a4574fc2b5e5cc4a"
+}

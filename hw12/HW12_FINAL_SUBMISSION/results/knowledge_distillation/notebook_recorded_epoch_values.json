@@ -1,0 +1,43 @@
+{
+  "_provenance": "Per-epoch values for the two seed-1598 runs whose training_history.json was not exported locally. Transcribed from printed output of notebooks/DATA266_HW12_Part2_3_Distillation_SEED1598_executed.ipynb (cells 27, 33, 29, 34). Epoch 1-2 validation accuracy and macro-F1 were printed to 2 / 4 decimals; epoch-3 values are exact from the sweep comparison tables. Training totals use the T^2-scaled loss.",
+  "temperature_T5_alpha05": [
+    {
+      "epoch": 1,
+      "train_kd_loss": 0.830511,
+      "validation_accuracy_pct": 93.93,
+      "validation_macro_f1": 0.9394
+    },
+    {
+      "epoch": 2,
+      "train_kd_loss": 0.305187,
+      "validation_accuracy_pct": 94.5,
+      "validation_macro_f1": 0.945
+    },
+    {
+      "epoch": 3,
+      "train_kd_loss": 0.191567,
+      "validation_accuracy_pct": 94.775,
+      "validation_macro_f1": 0.947808
+    }
+  ],
+  "alpha_T5_alpha075": [
+    {
+      "epoch": 1,
+      "train_kd_loss": 0.586589,
+      "validation_accuracy_pct": 93.77,
+      "validation_macro_f1": 0.9377
+    },
+    {
+      "epoch": 2,
+      "train_kd_loss": 0.242668,
+      "validation_accuracy_pct": 94.5,
+      "validation_macro_f1": 0.945
+    },
+    {
+      "epoch": 3,
+      "train_kd_loss": 0.154398,
+      "validation_accuracy_pct": 94.658333,
+      "validation_macro_f1": 0.946652
+    }
+  ]
+}

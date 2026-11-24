@@ -1,0 +1,23 @@
+{
+  "seed": 1598,
+  "dataset": "fancyzhx/ag_news",
+  "source_split": "train",
+  "teacher_checkpoint": "/content/drive/MyDrive/DATA266_HW12/teacher_model",
+  "num_examples": 120000,
+  "num_classes": 4,
+  "max_length": 256,
+  "new_logits_batch_size": 64,
+  "dtype": "float32",
+  "shape": [
+    120000,
+    4
+  ],
+  "original_training_rows_reused": 108000,
+  "new_validation_rows_generated": 12000,
+  "ordering": "original_AG_News_training_order",
+  "manifest_sha256": "b6cbd82e6f2e70d89cedc93b6a5cfbb36318c8d4a62b5950a4574fc2b5e5cc4a",
+  "student_training_rows": 108000,
+  "student_validation_rows": 12000,
+  "validation_used_for_student_training": false,
+  "generated_utc": "2026-11-21T09:18:43.489866+00:00"
+}

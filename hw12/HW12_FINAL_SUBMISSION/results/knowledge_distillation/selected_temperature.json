@@ -1,0 +1,12 @@
+{
+  "seed": 1598,
+  "selection_dataset": "AG News validation",
+  "selection_metric": "validation_accuracy",
+  "tie_breaker": "validation_macro_f1",
+  "selected_temperature": 5,
+  "alpha": 0.5,
+  "best_epoch": 3,
+  "validation_accuracy": 0.94775,
+  "validation_macro_f1": 0.9478081216116423,
+  "best_checkpoint": "/content/drive/MyDrive/DATA266_HW12/outputs/part2_distillation_seed1598/temperature_T5_alpha05/checkpoint_epoch_3"
+}

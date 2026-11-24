@@ -1,0 +1,19 @@
+# Parts 2-3 (knowledge distillation) environment, Google Colab
+# Training: NVIDIA L4. Final test evaluation and latency benchmark: Tesla T4.
+#
+# Recorded for the seed-1598 runs:
+transformers==5.22.1   # from "transformers_version" in every saved seed-1598 checkpoint config.json
+#
+# NOT recorded for the seed-1598 session: exact torch, datasets, accelerate and scikit-learn versions.
+# The earlier (superseded seed-42) session in
+# notebooks/supporting/DATA266_HW12_Distillation_working_notebook_executed.ipynb printed:
+#   torch 2.14.1+cu130, transformers 4.49.0, datasets 3.6.0, accelerate 1.4.0,
+#   huggingface-hub 0.36.2, safetensors 0.8.0, scikit-learn 1.6.1
+# These are listed for reference only; they are not claimed for the seed-1598 runs.
+#
+# Libraries imported by the notebook (versions unpinned):
+torch
+datasets
+scikit-learn
+numpy
+pandas

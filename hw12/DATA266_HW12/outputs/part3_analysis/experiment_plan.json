@@ -1,0 +1,27 @@
+{
+  "seed": 42,
+  "epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 2e-05,
+  "max_length": 256,
+  "temperature_values": [
+    1,
+    2,
+    5,
+    10
+  ],
+  "fixed_alpha": 0.5,
+  "alpha_values": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "alpha_definition": "weight_of_cross_entropy",
+  "selection_metric": "validation_accuracy",
+  "completed_baseline": "T2_alpha05",
+  "remaining_temperatures": [
+    1,
+    5,
+    10
+  ]
+}

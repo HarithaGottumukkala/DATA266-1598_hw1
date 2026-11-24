@@ -1,0 +1,13 @@
+{
+  "seed": 1598,
+  "teacher_tokenizer": "/content/drive/MyDrive/DATA266_HW12/teacher_model",
+  "student_tokenizer": "distilbert/distilbert-base-uncased",
+  "max_length": 256,
+  "training_examples": 108000,
+  "validation_examples": 12000,
+  "train_dataset_fingerprint": "6aa5c62bad82e902",
+  "validation_dataset_fingerprint": "27b5ec68edccde99",
+  "split_manifest_sha256": "b6cbd82e6f2e70d89cedc93b6a5cfbb36318c8d4a62b5950a4574fc2b5e5cc4a",
+  "training_order": "seed1598_split_manifest_order",
+  "tokenizer_compatibility": "verified"
+}

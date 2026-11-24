@@ -1,0 +1,6 @@
+{
+  "best_epoch": 3,
+  "best_checkpoint": "/content/drive/MyDrive/DATA266_HW12/outputs/part2_distillation_seed1598/temperature_T10_alpha05/checkpoint_epoch_3",
+  "validation_accuracy": 0.9470833333333334,
+  "validation_macro_f1": 0.9471456950875767
+}

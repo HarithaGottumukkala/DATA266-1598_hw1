@@ -1,0 +1,120 @@
+DATA 266 - Homework 12 - RUN LOG
+=================================
+Student: Haritha Gottumukkala | SID4 = SEED = 1598
+Platform: Google Colab (GPU runtimes), Google Drive workspace /content/drive/MyDrive/DATA266_HW12
+
+HOW THIS LOG WAS PRODUCED
+This log was compiled after the fact from (a) printed cell outputs in the executed notebooks in notebooks/,
+(b) UTC timestamps stored in saved JSON artifacts in results/, and (c) the GPTQ log extract saved in Colab
+(results/gptq/gptq_colab_log_extract.txt). It is NOT a verbatim console transcript. Where no timestamp or
+duration was saved, the entry says "not recorded". All times are UTC.
+
+======================================================================
+PART 1 - GPTQ QUANTIZATION OF facebook/opt-125m
+======================================================================
+Notebook : notebooks/DATA266_HW12_Part1_GPTQ_executed.ipynb
+Hardware : NVIDIA L4, 22.03 GiB total
+Initial software : Python 3.13.16, torch 2.14.1+cu130, transformers 5.22.1, datasets 4.8.5, accelerate 1.15.0
+Final software   : torch 2.15.0+cu132, transformers 5.23.0, datasets 5.2.0, gptqmodel 7.12.0
+
+[1] Base-model verification ........................................ SUCCESS
+    facebook/opt-125m rev 27dcfa74d334bc871f3234de431e71c6eeba5dd6; OPTForCausalLM; 125,239,296 params;
+    12 layers; vocab 50,272; FP16. Recorded instructor approval: "Not yet confirmed".
+    Timestamp: not recorded
+[2] WikiText-2 preparation ......................................... SUCCESS
+    train 36,718 / validation 3,760 / test 4,358 records; 128 calibration samples (seed 1598, <=256 tokens);
+    2,891 non-empty test records. Timestamp: not recorded
+[3] FP16 baseline perplexity (initial environment) ................. SUCCESS
+    287,644 tokens, 287,643 scored, 562 windows (1024/512); avg NLL 3.262074; PPL 26.1036
+[4] GPTQModel dependency dry run ................................... SUCCESS (return code 0)
+[5] GPTQModel installation (pip install gptqmodel==7.12.0) ......... SUCCESS, WITH WARNINGS
+    pip reported dependency conflicts with preinstalled Colab packages
+    (e.g. google-colab 1.0.0 requires requests==2.32.4, but requests 2.34.2 was installed).
+[6] Post-install import check ...................................... FAILED -> FIXED
+    Error: ModuleNotFoundError: Could not import module 'AutoProcessor'
+    Root cause: RuntimeError - PyTorch compiled with CUDA 13.2, TorchAudio with CUDA 13.0.
+    Fix: pip uninstall -y torchaudio; runtime restarted.
+    Re-check (log time 2026-11-19 20:48:16): GPTQModel 7.12.0 import PASS, QuantizeConfig import PASS.
+[7] GPTQ 4-bit quantization ........................................ SUCCESS
+    Started 2026-11-19T20:49:29.672Z  Completed 2026-11-19T20:50:14.802Z  Elapsed 44.44 s
+    bits 4, group_size 128, desc_act False, lm_head not quantized, 128 calibration samples, batch 1,
+    18,595 calibration tokens, 12 layers / 72 modules, peak VRAM 0.38 GiB, est. 4.2875 bits/weight.
+    Warning from GPTQModel: "Calibration dataset size should be more than 256. Current: 128."
+    GPTQModel size report: 478.03 MB (pre-quantization) -> 119.27 MB (-75.05%).
+    Output: outputs/part1_gptq/opt125m_gptq_4bit (7 files)
+[8] Checkpoint reload and generation check ......................... SUCCESS
+    Kernel: MarlinLinear (72 modules); Marlin JIT compile 197 s (one-time, excluded from benchmarks).
+    Prompt "The future of artificial intelligence is" -> valid continuation.
+[9] GPTQ perplexity ................................................ SUCCESS
+    avg NLL 3.387793; PPL 29.6005 (+13.40% vs FP16)
+[10] FP16 vs GPTQ benchmark ........................................ SUCCESS
+    batch 1, seq 128, 15 warm-up + 80 timed runs
+    FP16 : p50 7.914 ms, p95 10.295 ms, mean 8.366 ms, peak 0.2654 GiB, weights 238.896 MiB
+    GPTQ : p50 16.356 ms, p95 18.907 ms, mean 16.582 ms, peak 0.1481 GiB, weights 119.318 MiB
+[11] FP16 perplexity re-check in final environment ................. SUCCESS
+    avg NLL 3.262023; PPL 26.1023 (difference from [3]: -0.0013)
+[12] Metrics report and log extract generated ...................... SUCCESS
+    RUN_LOG_GPTQ_DRAFT generated 2026-11-19T21:06:59Z (included as results/gptq/gptq_colab_log_extract.txt)
+
+======================================================================
+PARTS 2-3 - KNOWLEDGE DISTILLATION (SEED 1598)
+======================================================================
+Notebook : notebooks/DATA266_HW12_Part2_3_Distillation_SEED1598_executed.ipynb
+Hardware : training on NVIDIA L4; final evaluation, benchmark and 12k-logit completion on Tesla T4
+Software : transformers 5.22.1 (from saved checkpoint configs); other versions not recorded
+Teacher  : instructor-provided BERT-base (109,485,316 params), local folder DATA266_HW12/teacher_model
+Student  : distilbert/distilbert-base-uncased (66,956,548 params), fresh init per run
+Common   : 3 epochs, batch 16, AdamW lr 2e-5, wd 0.01, warmup 6% (1,215/20,250 steps), clip 1.0,
+           max_length 256, FP32, 6,750 steps/epoch
+Loss     : alpha*CE + (1-alpha)*T^2*KL   (alpha = hard-label weight; T^2-scaled in every run)
+
+[1] Data split (stratified, seed 1598) ............................. SUCCESS
+    108,000 train / 12,000 val (balanced 27,000 / 3,000 per class); test 7,600 (1,900 per class)
+    manifest SHA-256 b6cbd82e6f2e70d89cedc93b6a5cfbb36318c8d4a62b5950a4574fc2b5e5cc4a
+[2] Tokenization check and teacher logits (108,000 x 4) ............ SUCCESS   timestamp: not recorded
+[3] Loss unit test and training smoke test ......................... SUCCESS
+
+Training runs (epoch completion timestamps from saved histories):
+ Run                 epoch 1 done           epoch 2 done           epoch 3 done           best val acc
+ T=2,  a=0.50        2026-11-19 23:49:08    2026-11-19 23:58:23    2026-11-20 00:07:38    94.7000% (ep 3)
+ T=1,  a=0.50        2026-11-20 00:21:04    2026-11-20 00:30:16    2026-11-20 00:39:27    94.7167% (ep 3)
+ T=5,  a=0.50        not recorded (history file not exported)                              94.7750% (ep 3)
+ T=10, a=0.50        2026-11-20 01:17:51    2026-11-20 01:27:02    2026-11-20 01:36:14    94.7083% (ep 3)
+ T=5,  a=0.25        2026-11-20 01:47:47    2026-11-20 01:56:59    2026-11-20 02:06:11    94.7917% (ep 3)
+     (run started 2026-11-20T01:38:36Z; total 27.6 min)
+ T=5,  a=0.75        not recorded (history file not exported)                              94.6583% (ep 3)
+ Epoch duration where recorded: ~9.2 min on L4. All six runs: SUCCESS, 3/3 epochs, checkpoints saved.
+
+[4] Temperature selection (validation only) ........................ T = 5
+[5] Alpha selection (validation only) .............................. alpha = 0.25 -> alpha_T5_alpha025/checkpoint_epoch_3
+[6] Selected checkpoint reload, (1,4) forward pass ................. SUCCESS (Tesla T4)
+[7] Test evaluation, 7,600 articles ................................ SUCCESS   timestamp: not recorded
+    teacher 94.4605% / macro-F1 0.944652; student 94.6579% / 0.946626
+[8] Per-class accuracy and paired errors ........................... SUCCESS
+    92 teacher-correct / student-wrong; most degraded class Business (-0.1579 pp)
+[9] Teacher/student benchmark (T4, batch 1, 256 tok, 20+100) ....... SUCCESS
+    teacher p50 16.712 / p95 17.106 ms, 0.4264 GiB, 418.58 MiB
+    student p50  8.581 / p95  8.908 ms, 0.2680 GiB, 255.43 MiB
+[10] Teacher logits for remaining 12,000 rows ...................... FAILED -> FIXED -> SUCCESS
+    A first attempt passed a Hugging Face dataset column directly to the tokenizer and raised a ValueError
+    (documented in the AI-use record; the failing output is not preserved in the notebook). The column was
+    converted to list[str] and the run succeeded. Full cache (120000x4) generated 2026-11-21T09:18:43Z.
+    The validation logits were not used to train any student.
+
+Files saved to Google Drive only (not available locally): paired_test_predictions.csv, per_class_accuracy.csv,
+five_failure_examples.csv, all_teacher_correct_student_wrong.csv, final_test_metrics.json, temperature/alpha
+comparison CSVs, model checkpoints. Their printed values are preserved in the notebook outputs.
+
+======================================================================
+SUPERSEDED / NOT EXECUTED
+======================================================================
+- Seed-42 pilot (notebooks/supporting/DATA266_HW12_Distillation_working_notebook_executed.ipynb):
+  executed, but superseded because the course requires SEED = SID4. Not used in any reported result.
+- Unscaled-KL notebook (notebooks/supporting/DATA266_HW12_Part2_Unscaled_KD_NOT_EXECUTED.ipynb):
+  prepared, NOT executed (no GPU resources left). Produced no results.
+
+======================================================================
+POST-HOC CPU ANALYSIS (no training, no inference)
+======================================================================
+2026-11-24 (local machine, CPU): src/derive_metrics.py and src/make_figures.py run on the saved artifacts
+to produce results/knowledge_distillation/derived_metrics.json, figures/, and report_source/figures/.

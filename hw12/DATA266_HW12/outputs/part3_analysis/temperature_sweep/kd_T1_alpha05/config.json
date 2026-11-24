@@ -1,0 +1,18 @@
+{
+  "experiment_name": "kd_T1_alpha05",
+  "temperature": 1,
+  "alpha": 0.5,
+  "alpha_definition": "cross_entropy_weight",
+  "seed": 42,
+  "epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.06,
+  "max_length": 256,
+  "gradient_clip_norm": 1.0,
+  "teacher_logits": "/content/drive/MyDrive/DATA266_HW12/outputs/part2_distillation/teacher_logits/teacher_train_logits.npy",
+  "model": "distilbert/distilbert-base-uncased",
+  "validation_selection": "best_accuracy",
+  "mixed_precision": "bf16"
+}

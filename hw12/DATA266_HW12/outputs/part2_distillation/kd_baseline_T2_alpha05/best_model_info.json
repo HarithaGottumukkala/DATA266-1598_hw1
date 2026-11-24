@@ -1,0 +1,7 @@
+{
+  "best_epoch": 3,
+  "validation_accuracy": 0.95125,
+  "validation_macro_f1": 0.9512333365203146,
+  "temperature": 2.0,
+  "alpha": 0.5
+}

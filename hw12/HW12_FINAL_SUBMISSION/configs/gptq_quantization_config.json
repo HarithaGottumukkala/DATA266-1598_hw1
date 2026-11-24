@@ -1,0 +1,32 @@
+{
+  "_provenance": "Quantization configuration as recorded in the executed GPTQ notebook (cell 20 markdown, cell 21 output).",
+  "method": "GPTQ",
+  "library": "GPTQModel 7.12.0",
+  "bits": 4,
+  "group_size": 128,
+  "desc_act": false,
+  "lm_head_quantized": false,
+  "calibration_dataset": "Salesforce/wikitext wikitext-2-raw-v1 train",
+  "calibration_samples": 128,
+  "calibration_max_tokens": 256,
+  "calibration_total_tokens": 18595,
+  "calibration_batch_size": 1,
+  "elapsed_seconds": 44.440507021000485,
+  "layers": 12,
+  "quantized_modules": 72,
+  "estimated_bpw": 4.2875,
+  "peak_quantization_vram_gib": 0.38,
+  "kernel_selected": "MarlinLinear",
+  "gptqmodel_reported_size_mb": {
+    "pre_quantized_fp32": 478.03,
+    "quantized": 119.27,
+    "reduction_pct": 75.05
+  },
+  "seed": 1598,
+  "base_model": {
+    "id": "facebook/opt-125m",
+    "revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+    "parameters": 125239296,
+    "instructor_approval": "Not confirmed in project records"
+  }
+}

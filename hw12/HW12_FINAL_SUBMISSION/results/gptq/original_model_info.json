@@ -1,0 +1,14 @@
+{
+  "model_id": "facebook/opt-125m",
+  "revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+  "precision": "torch.float16",
+  "parameters": 125239296,
+  "architecture": [
+    "OPTForCausalLM"
+  ],
+  "model_type": "opt",
+  "vocab_size": 50272,
+  "num_hidden_layers": 12,
+  "gpu": "NVIDIA L4",
+  "seed": 1598
+}
